@@ -1,10 +1,22 @@
-body{
+body {
 	font-family: 'Ubuntu', sans-serif;
 	color: #CE93D8;
 }
-*,*:after ,*:before{
+
+*,
+*:after,
+*:before {
 	box-sizing: border-box;
 }
+
 .content {
-	margin: 80px;
+	margin: 5%;
+}
+
+.content h1 {
+	font-size: 2rem;
+}
+
+.content p {
+	font-size: 1rem;
 }
