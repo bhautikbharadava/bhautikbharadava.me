@@ -1,0 +1,10 @@
+body{
+	font-family: 'Ubuntu', sans-serif;
+	color: #CE93D8;
+}
+*,*:after ,*:before{
+	box-sizing: border-box;
+}
+.content {
+	margin: 80px;
+}
