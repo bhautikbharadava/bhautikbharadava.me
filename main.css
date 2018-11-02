@@ -1,22 +1,94 @@
 body {
-	font-family: 'Ubuntu', sans-serif;
-	color: #CE93D8;
+  font-family: "Ubuntu", sans-serif;
+  color: #ce93d8;
+  margin: 0;
+  padding: 0;
 }
 
 *,
 *:after,
 *:before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .content {
-	margin: 5%;
+  /* margin: 5%; */
+  margin: 0;
+  padding: 0;
+  background-color: #ff6f69;
+  background: radial-gradient(#ff6f69, #ff8b87);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content h1 {
-	font-size: 2rem;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .content p {
-	font-size: 1rem;
+  font-size: 1rem;
+}
+.border {
+  padding: 5px;
+  background: linear-gradient(110deg, #ffeead 33%, rgba(0, 0, 0, 0) 33%),
+    linear-gradient(110deg, #c5e7d7 34%, #88d8b0 34%);
+  background-size: 400% 400%;
+  /* height: 400px; */
+  background-position: 25% 50%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+}
+.inner-cutout {
+  padding: 40px 0;
+  display: block;
+  background-color: #ff6f69; /*#ff6f69*/
+
+  margin: 2%;
+  padding-bottom: 40px;
+  /* height: 300px; */
+  background: radial-gradient(#ff6f69, #ff8b87);
+  background-size: 300%;
+  background-position: 50% 50%;
+}
+.knockout {
+  vertical-align: middle;
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  font-size: 50pt;
+  color: blue;
+  color: #fff;
+  background: linear-gradient(110deg, #ffeead 33%, rgba(0, 0, 0, 0) 33%),
+    linear-gradient(110deg, #c5e7d7 34%, #88d8b0 34%);
+  background-size: 400%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.knockout {
+  animation: Gradient 5s ease infinite;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 30% 50%;
+  }
+  50% {
+    background-position: 25% 50%;
+  }
+  100% {
+    background-position: 30% 50%;
+  }
+}
+
+.main {
+  width: 500px;
+  /* height: 800px; */
+  /* margin-left: 40%; */
+  /* margin-right: 40%; */
+  /* margin-top: 10%; */
 }
