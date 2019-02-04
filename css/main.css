@@ -13,3 +13,24 @@ html {
   overflow-x: hidden;
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
+a {
+  color: currentColor;
+  cursor: pointer;
+  text-decoration: none;
+}
+/* 2. Shared */
+.wallpaper {
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+/* 3. Specific */
+.wallpaper {
+  background-image: url("../images/background.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2;
+  position: fixed;
+}
