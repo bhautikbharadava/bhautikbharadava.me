@@ -19,7 +19,10 @@ a {
   text-decoration: none;
 }
 /* 2. Shared */
-.wallpaper {
+
+.wallpaper,
+.picture-shadow,
+.picture-image {
   display: block;
   height: 100%;
   left: 0;
@@ -46,6 +49,22 @@ a {
 }
 .about {
   max-width: 26rem;
+}
+
+.picture {
+  padding-top: 100%;
+  position: relative;
+  width: 100%;
+}
+.picture-shadow {
+  border-radius: 280497px;
+  background-image: radial-gradient(#000 0%, rgba(0, 0, 0, 0) 70%);
+  position: absolute;
+  top: 10%;
+}
+.picture-image {
+  border-radius: 280497px;
+  position: absolute;
 }
 /* 4. Responsiveness */
 @media screen and (max-width: 799px) {
