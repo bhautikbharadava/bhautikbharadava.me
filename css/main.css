@@ -19,13 +19,28 @@ a {
   text-decoration: none;
 }
 /* 2. Shared */
-.wallpaper {
+
+.wallpaper,
+.picture-shadow,
+.picture-image {
   display: block;
   height: 100%;
   left: 0;
   top: 0;
   width: 100%;
 }
+.job,
+.button {
+  font-family: "Montserrat", "Quicksand", sans-serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.button,
+.social a {
+  transform-origin: center;
+  transition-duration: 100ms;
+}
+
 /* 3. Specific */
 .wallpaper {
   background-image: url("../images/background.jpg");
@@ -45,7 +60,68 @@ a {
   max-width: 20rem;
 }
 .about {
-  max-width: 26rem;
+  max-width: 27rem;
+}
+
+.picture {
+  padding-top: 100%;
+  position: relative;
+  width: 100%;
+}
+.picture-shadow {
+  border-radius: 280497px;
+  background-image: radial-gradient(#000 0%, rgba(0, 0, 0, 0) 70%);
+  position: absolute;
+  top: 10%;
+}
+.picture-image {
+  border-radius: 280497px;
+  position: absolute;
+}
+
+.name {
+  font-size: 2.25rem;
+  line-height: 1.125;
+  margin-bottom: 0.5rem;
+}
+.job {
+  color: #ffe479;
+  font-size: 0.75rem;
+}
+.hr {
+  background-color: #ff470f;
+  border: none;
+  content: "";
+  height: 1px;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  transform-origin: center left;
+  width: 4rem;
+}
+.description {
+  font-size: 1.5rem;
+}
+.contact {
+  display: inline-block;
+  margin-top: 1.5rem;
+  vertical-align: top;
+}
+
+.button {
+  background-color: #fff;
+  border-radius: 290486px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  color: #9013fe;
+  display: inline-block;
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: 1.25em 2em;
+  text-shadow: none;
+  transition-property: box-shadow, transform;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
 }
 /* 4. Responsiveness */
 @media screen and (max-width: 799px) {
