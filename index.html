@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bhautik Bharadava</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/minireset.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
 
-<head>
-	<title>Bhautik Bharadava</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <body>
+    <div class="wallpaper"></div>
+    <div class="content">
+      <aside class="side">
+        <figure class="picture">
+          <div class="picture-shadow"></div>
+          <img
+            id="pictureImage"
+            class="picture-image"
+            src="images/Avatar.png"
+            alt="Portrait of Bhautik Bharadava"
+            width="320"
+            height="320"
+          />
+        </figure>
+      </aside>
+      <main class="about">
+        <h1 class="name">
+          Hi, I'm Bhautik Bharadava
+        </h1>
+        <p class="job">
+          Full Stack Developer
+        </p>
+        <hr class="hr" />
+        <div class="description">
+          <p>
+            I spend my time to learn new technologies. Mostly you will find me
+            tweaking on codepen creating some awesome designs. Well I work with
+            HTML5,CSS3,SCSS,React,Redux,Laravel.Have also learned Webpack and
+            AWS services.
+          </p>
+        </div>
+        <div class="contact">
+          <a class="button" href="mailto:bhautikbharadava@gmail.com">
+            Get in touch
+          </a>
+        </div>
+      </main>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-126436259-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-	<!-- <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
-	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css" rel="stylesheet"> -->
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./main.css">
-	<!-- Google Tag Manager -->
-	<script>
-		(function (w, d, s, l, i) {
-			w[l] = w[l] || [];
-			w[l].push({
-				'gtm.start': new Date().getTime(),
-				event: 'gtm.js'
-			});
-			var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s),
-				dl = l != 'dataLayer' ? '&l=' + l : '';
-			j.async = true;
-			j.src =
-				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-			f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-K7MG8CS');
-	</script>
-	<!-- End Google Tag Manager -->
-</head>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<body>
-	<div class="content">
-		<div class="main">
-			<div class="border">
-				<div class="inner-cutout">
-					<h1 class="knockout">Bhautik<br> Bharadava</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126436259-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-126436259-1');
-	</script>
-</body>
-
+      gtag("config", "UA-126436259-1");
+    </script>
+  </body>
 </html>
