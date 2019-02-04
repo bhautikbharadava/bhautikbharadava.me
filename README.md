@@ -2,4 +2,4 @@
 
 This is my personal portfolio website.
 
-![Portfolio](http://url/to/img.png)
+![Portfolio](https://github.com/bhautikbharadava/bhautikbharadava.me/blob/master/portfolio.png)
