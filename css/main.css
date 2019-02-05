@@ -60,6 +60,7 @@ a {
   max-width: 20rem;
 }
 .about {
+  width: 100%;
   max-width: 27rem;
 }
 
@@ -100,6 +101,9 @@ a {
 }
 .description {
   font-size: 1.5rem;
+}
+.description p {
+  word-wrap: break-word;
 }
 .contact {
   display: inline-block;
