@@ -60,6 +60,7 @@ a {
   max-width: 20rem;
 }
 .about {
+  width: 100%;
   max-width: 27rem;
 }
 
@@ -101,6 +102,9 @@ a {
 .description {
   font-size: 1.5rem;
 }
+.description p {
+  word-wrap: break-word;
+}
 .contact {
   display: inline-block;
   margin-top: 1.5rem;
@@ -122,19 +126,6 @@ a {
   vertical-align: top;
   white-space: nowrap;
   will-change: box-shadow, transform;
-}
-/* 4. Responsiveness */
-@media screen and (max-width: 799px) {
-  .content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 3rem;
-  }
-  .side {
-    margin-bottom: 3rem;
-    width: 100%;
-  }
 }
 .social {
   display: flex;
@@ -166,6 +157,28 @@ a {
   opacity: 1;
   transform: scale(1.1);
 }
+/* 4. Responsiveness */
+@media screen and (max-width: 799px) {
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 3rem;
+  }
+  .side {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+  .contact {
+    display: block;
+    text-align: center;
+  }
+  .social {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .content {
     align-items: center;
