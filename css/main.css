@@ -127,19 +127,6 @@ a {
   white-space: nowrap;
   will-change: box-shadow, transform;
 }
-/* 4. Responsiveness */
-@media screen and (max-width: 799px) {
-  .content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 3rem;
-  }
-  .side {
-    margin-bottom: 3rem;
-    width: 100%;
-  }
-}
 .social {
   display: flex;
   margin-top: 1.5rem;
@@ -170,6 +157,20 @@ a {
   opacity: 1;
   transform: scale(1.1);
 }
+/* 4. Responsiveness */
+@media screen and (max-width: 799px) {
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 3rem;
+  }
+  .side {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .content {
     align-items: center;
