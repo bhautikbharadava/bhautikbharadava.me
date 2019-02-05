@@ -169,6 +169,10 @@ a {
     margin-bottom: 3rem;
     width: 100%;
   }
+  .contact {
+    display: block;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 800px) {
