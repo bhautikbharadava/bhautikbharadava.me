@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Not found — Bhautik Bharadava</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="src/styles.css" />
+<style>
+  .shell{grid-template-columns:1fr}
+  .lost{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    gap:18px;padding:clamp(24px,6vw,80px);max-width:640px;margin:0 auto;
+  }
+  .lost h1{font-size:calc(var(--step) * 2.6);font-weight:var(--h-weight);letter-spacing:-.03em}
+  .lost p{color:var(--ink-2);font-size:calc(var(--step) * 1)}
+  .lost code{
+    font-family:var(--mono);font-size:calc(var(--step) * .82);color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent-line);
+    padding:2px 7px;border-radius:calc(var(--radius) * .5);word-break:break-all;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <main class="lost">
+    <span class="tagline">404</span>
+    <h1>That page doesn't exist.</h1>
+    <p>Nothing at <code id="path">this address</code>. The site is a single page, so almost
+    everything lives at the root.</p>
+    <div class="contact__links">
+      <a href="/">Back to the start</a>
+      <a href="mailto:bhautikbharadava@gmail.com">Email me</a>
+    </div>
+  </main>
+</div>
+<script>
+  // reflect the attempted path, escaped via textContent
+  document.getElementById('path').textContent = location.pathname;
+</script>
+</body>
+</html>

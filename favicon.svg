@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0d0c12"/>
+  <!-- a 2x2 token grid: the design-system mark -->
+  <rect x="14" y="14" width="15" height="15" rx="4" fill="#7c5cf5"/>
+  <rect x="35" y="14" width="15" height="15" rx="7.5" fill="#7c5cf5" opacity=".62"/>
+  <rect x="14" y="35" width="15" height="15" rx="7.5" fill="#7c5cf5" opacity=".62"/>
+  <rect x="35" y="35" width="15" height="15" rx="4" fill="#7c5cf5"/>
+</svg>
