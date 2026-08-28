@@ -6,7 +6,7 @@ Everything unfilled is marked `data-todo` in `index.html`. It renders in **amber
 grep -c 'data-todo' index.html      # how many are left
 ```
 
-Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Three placeholders remain, down from fourteen** — and all three are things only you can supply.
+Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Two placeholders remain, down from fourteen** — both are the same thing: your Medium link and which pieces to feature.
 
 ---
 
@@ -15,9 +15,8 @@ Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_E
 | Where | What's needed | How to find it |
 |---|---|---|
 | `LinkList` | Medium URL + the three pieces you'd want read | — |
-| `Availability` | Notice period | — |
 
-**Filled in since:** 30% faster builds and 3–5 engineers mentored (both on the Genea card and woven into the case studies), plus the ~50% engagement lift at Gridle from the résumé.
+**Filled in since:** 30% faster builds, 3–5 engineers mentored, a 2-month notice period, and the ~50% engagement lift at Gridle from the résumé.
 
 A bundle-size or load-time before/after would still complement the build-time number — the first is what users feel, the second is what the team feels. Worth adding if it exists, but not worth blocking on.
 
