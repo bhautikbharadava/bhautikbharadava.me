@@ -44,10 +44,10 @@ The `agentic-tooling` project card describes internal Genea work. It's written a
 
 ## 5 · Deploy
 
-The repo is already connected to Netlify (site `bhautikbharadava`, live at **bhautikbharadava.me**), so the domain and pipeline are done. What remains:
+The repo is connected to Netlify (site `bhautikbharadava`, live at **bhautikbharadava.netlify.app**), so hosting is sorted. What remains:
 
-- [ ] **`bhautikbharadava.me` does not resolve — NXDOMAIN.** The domain is not answering DNS at all, so the site is currently reachable only at `bhautikbharadava.netlify.app`. Either renew/re-point the domain, or decide to live on the netlify.app host. Until it resolves, `canonical`, `og:url` and `og:image` point at netlify.app; switch all three back once it works.
-- [x] ~~Replace the canonical / og:url placeholder~~ — set, currently to the netlify.app host (see above)
+- [x] ~~Domain~~ — settled: the site lives at `bhautikbharadava.netlify.app`. `canonical`, `og:url` and `og:image` all point there.
+- [x] ~~Replace the canonical / og:url placeholder~~ — pointing at the live host
 - [x] ~~Social preview~~ — `og:image` points at `images/Avatar.png`, which suits the `summary` card. If you'd rather have a wide card, make a 1200×630 PNG, save it as `og.png`, point `og:image` at it and switch `twitter:card` to `summary_large_image`.
 - [x] ~~Netlify builds blocked by the Lighthouse plugin~~ — fixed in the dashboard: plugin moved v4 → 6.0.1, and Node 16.x → 24.x. Both were site settings; `netlify.toml` keeps a note so nobody re-derives it.
 - [ ] **Merge `redesign/source` into `master`.** That is what replaces the live site — do it only once the placeholders above are filled.

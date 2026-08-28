@@ -1,6 +1,6 @@
-# bhautikbharadava.me [![Netlify Status](https://api.netlify.com/api/v1/badges/bb37e908-428c-4722-8c59-6e613bc5ffff/deploy-status)](https://app.netlify.com/sites/bhautikbharadava/deploys)
+# Bhautik Bharadava — personal site [![Netlify Status](https://api.netlify.com/api/v1/badges/bb37e908-428c-4722-8c59-6e613bc5ffff/deploy-status)](https://app.netlify.com/sites/bhautikbharadava/deploys)
 
-My personal site, built as a live design system.
+Built as a live design system. Lives at **[bhautikbharadava.netlify.app](https://bhautikbharadava.netlify.app)**.
 
 Every block on the page is a component instance driven by twelve CSS custom properties. The control panel writes to those properties and the browser recomputes — nothing re-renders. That is the argument the site is making, and the site is the evidence.
 
