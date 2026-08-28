@@ -6,7 +6,7 @@ Everything unfilled is marked `data-todo` in `index.html`. It renders in **amber
 grep -c 'data-todo' index.html      # how many are left
 ```
 
-Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Six placeholders remain, down from fourteen.**
+Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Three placeholders remain, down from fourteen** — and all three are things only you can supply.
 
 ---
 
@@ -14,13 +14,12 @@ Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_E
 
 | Where | What's needed | How to find it |
 |---|---|---|
-| `RoleCard` — Genea | Bundle size reduction % | CI build artifacts, or compare a build from before the Webpack work to now |
-| `RoleCard` — Genea | Engineers mentored | Your own count — code review and design-discussion regulars |
-| `ProjectCard` — modernisation | Bundle size and load time, before → after | Same source. **This is the most persuasive line on the page.** |
 | `LinkList` | Medium URL + the three pieces you'd want read | — |
 | `Availability` | Notice period | — |
 
-Your résumé is strong on *what you own* and thin on *what moved*. The three numeric gaps are all in the same place — the Webpack and performance work — and one credible before/after would carry the entire page.
+**Filled in since:** 30% faster builds and 3–5 engineers mentored (both on the Genea card and woven into the case studies), plus the ~50% engagement lift at Gridle from the résumé.
+
+A bundle-size or load-time before/after would still complement the build-time number — the first is what users feel, the second is what the team feels. Worth adding if it exists, but not worth blocking on.
 
 If a number genuinely doesn't exist, don't invent one. The cards are written so they stand up on specific technical decisions alone; a missing `Result` line degrades gracefully.
 
