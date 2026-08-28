@@ -6,62 +6,68 @@ Everything unfilled is marked `data-todo` in `index.html`. It renders in **amber
 grep -c 'data-todo' index.html      # how many are left
 ```
 
+Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Six placeholders remain, down from fourteen.**
+
 ---
 
-## 1 · The numbers (highest leverage — do these first)
-
-A senior or lead hire is bought with numbers. Everything else on this site is packaging; this section is the product. If you only do one thing, do this one.
+## 1 · What's still missing
 
 | Where | What's needed | How to find it |
 |---|---|---|
-| `RoleCard` — Genea | Components in the design system | Count the exported components in the library's index |
-| `RoleCard` — Genea | Product surfaces adopting it | Count the apps/repos importing the package |
-| `RoleCard` — Genea | Bundle size reduction % | Compare a build from before your work to now — CI artifacts or `git log` on the lockfile era |
-| `ProjectCard` — operator dashboard | The result | Support tickets about stale state, time-to-render a door list, incident count, or operator task time |
-| `ProjectCard` — design system | The result | Reduction in one-off UI, or change in time-to-ship a new screen |
-| `ProjectCard` — agentic tooling | The result | Engineers using it, time saved, or simply "in production across N teams" |
+| `RoleCard` — Genea | Bundle size reduction % | CI build artifacts, or compare a build from before the Webpack work to now |
+| `RoleCard` — Genea | Engineers mentored | Your own count — code review and design-discussion regulars |
+| `ProjectCard` — modernisation | Bundle size and load time, before → after | Same source. **This is the most persuasive line on the page.** |
+| `LinkList` | Medium URL + the three pieces you'd want read | — |
+| `Availability` | Notice period | — |
 
-**If a number genuinely doesn't exist**, don't invent one. Replace the placeholder with a specific technical decision instead — "chose an event projection over cached responses because three writers could race" is far stronger than "improved performance by an unverifiable percentage."
+Your résumé is strong on *what you own* and thin on *what moved*. The three numeric gaps are all in the same place — the Webpack and performance work — and one credible before/after would carry the entire page.
 
-## 2 · Biography
+If a number genuinely doesn't exist, don't invent one. The cards are written so they stand up on specific technical decisions alone; a missing `Result` line degrades gracefully.
 
-Assembled from public sources and **not verified**. One aggregator confused Genea with an unrelated Australian fertility company, so treat all of it as a draft.
+---
 
-- [ ] Genea start date
-- [ ] Clientjoy dates, plus two or three sentences on what you owned and shipped
-- [ ] Gridle dates, plus one concrete thing you built
-- [ ] Your notice period (in `Availability`)
-- [ ] Confirm your job title is exactly "Senior Software Engineer II"
+## 2 · Decisions I made from the résumé — check you agree
 
-## 3 · Links
+**Corrected against what was on the site before:**
 
-- [ ] Medium URL and the three pieces you'd want a hiring manager to read (`LinkList`)
-- [ ] Confirm the GitHub repo count — the site says 52, which was true when this was built
+- **8+ years**, not 7+. Your GitHub bio says 7+; the résumé says 8+. Used the résumé.
+- **Job title** is now "Senior Software Engineer, Frontend Owner" — the résumé's wording. A third-party listing had claimed "Senior Software Engineer II"; that's gone.
+- **Clientjoy removed.** It appeared in public aggregator data but is not on your résumé. If it belongs, say so and it goes back with real dates.
+- **Sequr, Inc. added** as its own role (Frontend Engineer, Sep 2019 – Jan 2020). Previously it was collapsed into "Genea, formerly Sequr", which lost a real position.
+- **TypeScript removed** from the stack. Your résumé lists "JavaScript (ES6+)" and never mentions TypeScript. If you do work in it, say so and it goes back — but the site shouldn't claim more than the CV.
+- **Dates** now match the résumé throughout: Genea Jan 2020–present, Sequr Sep 2019–Jan 2020, Gridle Sep 2017–Sep 2019 (intern, then engineer).
+- **~50% engagement lift** at Gridle is now on the page — it was the only hard number in the résumé and it was going unused.
 
-## 4 · Employer review
+**Two judgement calls worth a second opinion:**
 
-The `agentic-tooling` project card describes internal Genea work. It's written at the level of craft rather than architecture, with no service counts, tool counts or internal names — but **get sign-off before this goes public**, especially the "Result" line.
+- **The agentic / AI-tooling work is no longer on the site.** Earlier drafts led with it. Your résumé doesn't mention it at all, and a site claiming more than the CV is an inconsistency an interviewer will find. It is genuinely differentiating though — if you want it back, put it on the résumé too, and clear it with Genea.
+- **Your phone number is deliberately not on the site.** It's on the résumé, but a public page invites recruiter spam and scraping. Email and LinkedIn are there instead. Easy to add if you'd rather.
 
-## 5 · Deploy
+---
 
-The repo is connected to Netlify (site `bhautikbharadava`, live at **bhautikbharadava.netlify.app**), so hosting is sorted. What remains:
+## 3 · Deploy
 
-- [x] ~~Domain~~ — settled: the site lives at `bhautikbharadava.netlify.app`. `canonical`, `og:url` and `og:image` all point there.
-- [x] ~~Replace the canonical / og:url placeholder~~ — pointing at the live host
-- [x] ~~Social preview~~ — `og:image` points at `images/Avatar.png`, which suits the `summary` card. If you'd rather have a wide card, make a 1200×630 PNG, save it as `og.png`, point `og:image` at it and switch `twitter:card` to `summary_large_image`.
-- [x] ~~Netlify builds blocked by the Lighthouse plugin~~ — fixed in the dashboard: plugin moved v4 → 6.0.1, and Node 16.x → 24.x. Both were site settings; `netlify.toml` keeps a note so nobody re-derives it.
-- [ ] **Merge `redesign/source` into `master`.** That is what replaces the live site — do it only once the placeholders above are filled.
+The repo is connected to Netlify (site `bhautikbharadava`, live at **bhautikbharadava.netlify.app**), so hosting is sorted.
+
+- [x] ~~Domain~~ — settled: the site lives at `bhautikbharadava.netlify.app`.
+- [x] ~~Canonical / og:url~~ — pointing at the live host.
+- [x] ~~Social preview~~ — `og:image` uses `images/Avatar.png`, which suits the `summary` card. For a wide card, make a 1200×630 PNG as `og.png`, point `og:image` at it and switch `twitter:card` to `summary_large_image`.
+- [x] ~~Netlify builds blocked by the Lighthouse plugin~~ — fixed in the dashboard: plugin v4 → 6.0.1, Node 16.x → 24.x. `netlify.toml` keeps the note.
+- [ ] **Merge `redesign/source` into `master`.** That is what replaces the live site — only once the placeholders are filled.
+- [ ] Close the preview-only concept gallery (`preview/concepts`, PR #11) once a direction is settled.
 
 ### Two things removed from the old site — restore them if you disagree
 
-- **Google AdSense** (`ca-pub-7097771428383038`) was dropped. Ads on a portfolio you are using to apply for senior and lead roles work against you: they read as unprofessional to a hiring manager, add third-party requests to a page whose speed is part of the pitch, and earn effectively nothing at portfolio traffic levels. Easy to put back if you want it.
-- **Google Analytics** (`UA-126436259-1`) was dropped because it is dead code — Universal Analytics stopped processing data in July 2023. If you want analytics, add a GA4 property or something lighter like Plausible or Netlify Analytics, which needs no client-side script at all.
+- **Google AdSense** (`ca-pub-7097771428383038`) — ads work against a portfolio used to apply for senior roles, add third-party requests to a page whose speed is part of the pitch, and earn effectively nothing at this traffic level.
+- **Google Analytics** (`UA-126436259-1`) — dead code. Universal Analytics stopped processing data in July 2023. Add GA4 or something lighter (Plausible, Netlify Analytics) if you want numbers.
 
-## 6 · Final pass
+---
+
+## 4 · Final pass
 
 - [ ] `grep -c 'data-todo' index.html` returns **0**
 - [ ] Console shows no placeholder warning
-- [ ] Print the page (`⌘P`, or the "Print as résumé" link in the footer) and check the PDF reads well — the print stylesheet strips the control rail and lays it out as a one-column résumé with link destinations spelled out
-- [ ] Test both themes and a few accent hues; the palette is generated from `--hue`, so an unusual hue can surprise you
+- [ ] Print the page (`⌘P`, or "Print as résumé" in the footer) and check the PDF — the print stylesheet strips the control panel and lays it out as a one-column résumé with link destinations spelled out
+- [ ] Test both themes and a few accent hues; the palette is generated from `--hue`
 - [ ] Test at 375px wide
-- [ ] Run Lighthouse. There's no framework and no build step, so this should score very well — if it doesn't, something regressed
+- [ ] Run Lighthouse — it now runs automatically on every deploy

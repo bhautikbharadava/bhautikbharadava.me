@@ -158,13 +158,19 @@
   ]}
 />`,
     ProjectCard: `<ProjectCard
-  slug="operator-dashboard"
-  title="The operator dashboard"
-  tag="Frontend architecture"
-  problem="Three concurrent writers — hardware, schedules, operators."
-  approach="Project an event stream; reconcile explicitly; show staleness."
-  result={null}          // ← still unfilled
-/>`,
+  slug="frontend-ownership"
+  title="Owning a frontend platform"
+  tag="Architecture"
+  problem="Without a single owner, every team solves bundling, state and
+           permissions slightly differently."
+  approach="Be the decision-maker, not the reviewer. Set architecture, the
+            Webpack strategy and the standards — then live in the code."
+  result="Six years as the frontend authority on the product."
+/>
+
+// Sibling instances: slug="rbac" and slug="modernization".
+// The modernization card's result is still null — the bundle numbers are the
+// most persuasive line on the page and aren't filled in yet.`,
     PrincipleList: `<PrincipleList
   items={[
     { title: 'A design system is measured by adoption, not coverage.', body: '…' },

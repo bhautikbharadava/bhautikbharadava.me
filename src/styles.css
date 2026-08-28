@@ -456,6 +456,13 @@ body.chaos .role,body.chaos .stack,body.chaos .contact,body.chaos .callout{
   font-size:calc(var(--step) * .66);color:var(--faint);
 }
 
+/* e.g. "Sequr, Inc. (acquired by Genea)" — the parenthetical shouldn't
+   inherit the heading's weight or size */
+.role__note{
+  font-weight:400;font-size:calc(var(--step) * .74);color:var(--faint);
+  letter-spacing:0;
+}
+
 /* ── ProjectCard ── */
 
 .project{
