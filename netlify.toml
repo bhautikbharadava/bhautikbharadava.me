@@ -1,8 +1,8 @@
-# Static site — nothing to build, publish the repo root as-is.
-
-[build]
-  publish = "."
-  command = ""
+# Static site — no build step.
+#
+# Deliberately no [build] section: this repo has deployed from its root via the
+# site's dashboard settings since 2018. Declaring publish/command here would
+# override those working settings, so we only add headers.
 
 [[headers]]
   for = "/*"
@@ -10,7 +10,7 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 # Hashless asset names, so keep these short-lived and let the HTML revalidate.
 [[headers]]
