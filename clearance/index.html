@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bhautik Bharadava — Senior Frontend Engineer</title>
+<meta name="description" content="Senior frontend engineer, 7+ years of production React. I build the operator interface for a cloud-native access control platform, and the systems that let other engineers ship faster." />
+<link rel="stylesheet" href="src/styles.css" />
+</head>
+<body data-state="locked">
+
+<a class="skip-link" href="#lobby">Skip to content</a>
+
+<!-- ══════════════════════════════════════════════════════════════
+     STAGE 1 — THE READER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="gate" id="gate">
+
+  <div class="gate__chrome">
+    <span class="chrome-id">READER BB-01</span>
+    <span class="chrome-sep"></span>
+    <span class="chrome-loc">MAIN ENTRANCE</span>
+    <span class="chrome-clock" id="chromeClock">--:--:--</span>
+  </div>
+
+  <div class="gate__stage">
+
+    <div class="reader" id="reader" role="button" tabindex="0"
+         aria-label="Present credential. Press and hold to enter the site.">
+      <div class="reader__body">
+        <div class="reader__glow" id="readerGlow"></div>
+
+        <svg class="reader__arc" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="arc-track" cx="60" cy="60" r="52" />
+          <circle class="arc-fill" id="arcFill" cx="60" cy="60" r="52" />
+        </svg>
+
+        <div class="reader__ring" id="readerRing">
+          <svg viewBox="0 0 40 40" class="rfid" aria-hidden="true">
+            <path d="M14 12a11 11 0 0 1 0 16" /><path d="M19 8a17 17 0 0 1 0 24" />
+            <path d="M24 4a23 23 0 0 1 0 32" /><circle cx="10" cy="20" r="2.2" />
+          </svg>
+        </div>
+
+        <div class="reader__wave" id="wave1"></div>
+        <div class="reader__wave" id="wave2"></div>
+
+        <div class="reader__led" id="readerLed">
+          <i></i><span id="ledText">LOCKED</span>
+        </div>
+      </div>
+      <div class="reader__plate">BB&nbsp;·&nbsp;01</div>
+    </div>
+
+    <p class="gate__prompt" id="gatePrompt">
+      <kbd>Press&nbsp;and&nbsp;hold</kbd> to present credential
+    </p>
+
+    <div class="gate__identity">
+      <h1>Bhautik Bharadava</h1>
+      <p>Senior Frontend Engineer &nbsp;·&nbsp; Ahmedabad, IN</p>
+    </div>
+
+  </div>
+
+  <div class="gate__log" id="gateLog" aria-hidden="true"></div>
+
+  <button class="gate__skip" id="skipBtn">
+    In a hurry? Skip the door <span>&rarr;</span>
+  </button>
+
+  <!-- The physical doors that part on entry -->
+  <div class="door door--l"></div>
+  <div class="door door--r"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     STAGE 2 — INSIDE THE BUILDING
+     ══════════════════════════════════════════════════════════════ -->
+<div class="building" id="building">
+
+  <!-- ── Door directory ── -->
+  <nav class="directory" aria-label="Door directory">
+    <div class="directory__head">
+      <span class="dot"></span> DOOR DIRECTORY
+    </div>
+    <ul class="directory__list" id="doorList">
+      <li><a href="#lobby"       data-door="D-01" data-level="1">Lobby<em>About</em></a></li>
+      <li><a href="#engineering" data-door="D-02" data-level="1">Engineering<em>Work</em></a></li>
+      <li><a href="#server-room" data-door="D-03" data-level="1">Server Room<em>Stack</em></a></li>
+      <li><a href="#archive"     data-door="D-04" data-level="1">Archive<em>Writing</em></a></li>
+      <li><a href="#front-desk"  data-door="D-05" data-level="1">Front Desk<em>Contact</em></a></li>
+      <li class="is-locked"><a href="#" data-door="D-06" data-level="9" id="roofDoor">Roof<em>Restricted</em></a></li>
+    </ul>
+    <div class="directory__foot">
+      <div class="badge" id="badgeChip">
+        <span class="badge__k">CREDENTIAL</span>
+        <span class="badge__v" id="credId">0x8F2A11</span>
+        <span class="badge__k">CLEARANCE</span>
+        <span class="badge__v" id="credLevel">VISITOR · L1</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Content ── -->
+  <main class="content">
+
+    <section class="pane" id="lobby">
+      <div class="pane__mark"><span>D-01</span> LOBBY</div>
+      <h2 class="lede">
+        I build the interfaces that decide <em>who gets in</em> — and the
+        systems that decide <em>how software gets built</em>.
+      </h2>
+      <div class="cols">
+        <p>Seven years of production React, most of it spent on the operator side of a cloud-native
+        access control platform: doors, credentials, schedules, audit trails. Software where a
+        dropped frame is an annoyance and a wrong state is a locked-out building.</p>
+        <p>Lately I've been building in the other direction — developer tooling and agentic
+        workflows that compress the distance between a spec and a shipped pull request. The same
+        instinct, pointed inward: make the system legible, then make it fast.</p>
+      </div>
+      <div class="facts">
+        <div><b>7+</b><span>years shipping React</span></div>
+        <div><b>[XX]</b><span>components in the design system</span></div>
+        <div><b>[XX]%</b><span>dashboard bundle reduction</span></div>
+        <div><b>IST</b><span>UTC+5:30 · remote-ready</span></div>
+      </div>
+    </section>
+
+    <section class="pane" id="engineering">
+      <div class="pane__mark"><span>D-02</span> ENGINEERING</div>
+      <h3 class="pane__title">Access events</h3>
+      <p class="pane__sub">A career reads better as an audit log than as a résumé. Every entry below
+      is a door someone opened, and what happened after.</p>
+
+      <ol class="audit" id="careerLog">
+        <li data-status="granted">
+          <span class="audit__ts">2022 —</span>
+          <span class="audit__badge">GRANTED</span>
+          <div class="audit__body">
+            <h4>Genea <em>(formerly Sequr)</em> — Senior Software Engineer II</h4>
+            <p>Cloud-native access control for commercial real estate. I own significant surface area
+            of the operator dashboard — the screen a security admin lives in — plus a design system of
+            micro components shared across product surfaces.</p>
+            <ul>
+              <li>Frontend architecture for door, credential, schedule and audit management</li>
+              <li>Design system adopted across [XX] product surfaces, cutting one-off UI by [XX]%</li>
+              <li>Currently building developer tooling for agentic, spec-driven delivery</li>
+            </ul>
+          </div>
+        </li>
+        <li data-status="granted">
+          <span class="audit__ts">20XX —</span>
+          <span class="audit__badge">GRANTED</span>
+          <div class="audit__body">
+            <h4>Clientjoy — Software Engineer</h4>
+            <p>Client lifecycle management SaaS. [VERIFY: two or three concrete outcomes — what you
+            built, what it moved.]</p>
+          </div>
+        </li>
+        <li data-status="granted">
+          <span class="audit__ts">20XX —</span>
+          <span class="audit__badge">GRANTED</span>
+          <div class="audit__body">
+            <h4>Gridle — Software Engineer, then Intern</h4>
+            <p>Team productivity platform. Where the frontend habit started. [VERIFY: outcomes.]</p>
+          </div>
+        </li>
+        <li data-status="enrolled">
+          <span class="audit__ts">2014 –18</span>
+          <span class="audit__badge">ENROLLED</span>
+          <div class="audit__body">
+            <h4>L.D. College of Engineering, Ahmedabad</h4>
+            <p>B.E. Computer Science.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="pane" id="server-room">
+      <div class="pane__mark"><span>D-03</span> SERVER ROOM</div>
+      <h3 class="pane__title">What's racked</h3>
+      <div class="racks">
+        <div class="rack">
+          <h5>Core</h5>
+          <ul><li>React</li><li>TypeScript</li><li>Redux</li><li>SCSS / CSS architecture</li><li>Vite · webpack</li></ul>
+        </div>
+        <div class="rack">
+          <h5>Backend &amp; infra</h5>
+          <ul><li>Node.js</li><li>Laravel / PHP</li><li>REST · WebSockets</li><li>Docker</li><li>AWS</li></ul>
+        </div>
+        <div class="rack">
+          <h5>Craft</h5>
+          <ul><li>Design systems</li><li>Component API design</li><li>Core Web Vitals</li><li>Accessibility</li></ul>
+        </div>
+        <div class="rack">
+          <h5>Agentic</h5>
+          <ul><li>Agent tooling</li><li>MCP servers</li><li>Spec-driven development</li><li>Context engineering</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="pane" id="archive">
+      <div class="pane__mark"><span>D-04</span> ARCHIVE</div>
+      <h3 class="pane__title">Things written and things tried</h3>
+      <div class="cards">
+        <a class="card" href="https://codepen.io/bhautikbharadava" target="_blank" rel="noopener">
+          <span class="card__k">CodePen</span>
+          <b>Creative coding</b>
+          <p>Where the interaction ideas get prototyped before they earn a place in production.</p>
+        </a>
+        <a class="card" href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">
+          <span class="card__k">GitHub</span>
+          <b>52 repositories</b>
+          <p>Libraries, experiments, and the long tail of things built to understand them.</p>
+        </a>
+        <a class="card" href="#" data-verify="Medium URL">
+          <span class="card__k">Writing</span>
+          <b>Essays on frontend</b>
+          <p>[VERIFY: link your Medium and pull the three pieces you'd want a hiring manager to read.]</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="pane" id="front-desk">
+      <div class="pane__mark"><span>D-05</span> FRONT DESK</div>
+      <h3 class="pane__title">Request access</h3>
+      <p class="pane__sub">Open to remote senior and lead frontend roles. Fastest route is email.</p>
+      <div class="contact">
+        <a href="mailto:bhautikbharadava@gmail.com">bhautikbharadava@gmail.com</a>
+        <a href="https://www.linkedin.com/in/bhautikbharadava/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <footer class="colophon">
+        <p>This site is an access control system. You badged in at the door; the log on the right has
+        been recording you since. No data leaves your browser — the log is local, and it forgets you
+        when you close the tab.</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ── Live audit log ── -->
+  <aside class="lograil" aria-label="Live audit log" aria-live="off">
+    <div class="lograil__head">
+      <span class="dot dot--live"></span> AUDIT LOG
+      <button class="lograil__toggle" id="logToggle" aria-label="Collapse log">—</button>
+    </div>
+    <div class="lograil__body" id="liveLog"></div>
+    <div class="lograil__foot"><span id="eventCount">0</span> EVENTS · SESSION LOCAL</div>
+  </aside>
+
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"><i></i></div>
+<div class="denied-flash" id="deniedFlash" aria-hidden="true"></div>
+
+<script src="src/app.js"></script>
+</body>
+</html>

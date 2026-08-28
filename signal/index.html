@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bhautik Bharadava — Senior Frontend Engineer</title>
+<meta name="description" content="Senior frontend engineer in Ahmedabad. Seven years of production React, building the operator interface for cloud-native access control — and the tooling that lets agents ship software safely." />
+<link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="hud" aria-hidden="true">
+  <span class="hud__k">SIGNAL</span>
+  <span class="hud__bar"><i id="hudBar"></i></span>
+  <span class="hud__v" id="hudVal">00</span>
+</div>
+
+<header class="masthead">
+  <a class="masthead__name" href="#top">Bhautik&nbsp;Bharadava</a>
+  <nav class="masthead__nav">
+    <a href="#work">Work</a>
+    <a href="#craft">Craft</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <span class="masthead__status"><i></i>Open to senior &amp; lead roles</span>
+</header>
+
+<main id="top">
+
+  <!-- ── hero ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="kicker"><span>01</span> Ahmedabad, IN &nbsp;·&nbsp; UTC+5:30</p>
+    <h1 class="display">
+      <span class="line"><b>I build interfaces</b></span>
+      <span class="line"><b>for systems where</b></span>
+      <span class="line"><b>being <em>wrong</em> has</b></span>
+      <span class="line"><b>consequences.</b></span>
+    </h1>
+    <p class="hero__sub">
+      Seven years of production React. Most of it spent on the operator side of
+      a cloud-native access control platform — where a stale state doesn't look
+      bad, it locks someone out of a building.
+    </p>
+    <a class="scroll-cue" href="#statement">
+      <span>Keep reading</span>
+      <svg viewBox="0 0 12 28" aria-hidden="true"><path d="M6 0v26M1 21l5 5 5-5"/></svg>
+    </a>
+  </section>
+
+  <!-- ── statement ────────────────────────────────────────────── -->
+  <section class="chapter" id="statement">
+    <p class="kicker"><span>02</span> Position</p>
+    <div class="chapter__grid">
+      <h2 class="reveal">Frontend, pointed at problems that bite back.</h2>
+      <div class="prose">
+        <p class="reveal">Most frontend work is judged on how it looks. Mine is judged on whether
+        a security administrator can trust what the screen is telling them at two in the morning.
+        That changes the priorities: state modelling over styling, honesty over polish, and a
+        visible admission of staleness rather than a confident lie.</p>
+        <p class="reveal">The second half of my work points inward. I build the tooling and
+        component systems other engineers depend on — most recently, developer surfaces for
+        spec-driven delivery with AI agents. Engineers are the least forgiving users there are,
+        which makes them the most useful ones to design for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── work ─────────────────────────────────────────────────── -->
+  <section class="chapter" id="work">
+    <p class="kicker"><span>03</span> Selected work</p>
+
+    <article class="entry reveal">
+      <div class="entry__meta">
+        <span class="entry__yr">Now</span>
+        <span class="entry__role">Senior Software Engineer II</span>
+      </div>
+      <div class="entry__body">
+        <h3>Genea <span>— cloud-native access control</span></h3>
+        <p>The operator dashboard for a platform that controls physical doors across commercial
+        real estate. Doors change state from hardware, from other operators, and from schedules,
+        all at once. I treat the interface as a projection of an event stream rather than a cache
+        of responses — one authoritative reducer, explicit reconciliation, and a staleness
+        indicator instead of a silent lie.</p>
+        <ul>
+          <li>Design system of micro components adopted across <b>[XX]</b> product surfaces</li>
+          <li>Dashboard bundle reduced from <b>[XX]</b> to <b>[XX]</b></li>
+          <li>Frontend architecture spanning web, mobile access and integrations</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry__meta">
+        <span class="entry__yr">Also now</span>
+        <span class="entry__role">Agentic delivery tooling</span>
+      </div>
+      <div class="entry__body">
+        <h3>Developer surfaces <span>— for AI that ships code</span></h3>
+        <p>Taking a written specification and turning it into work that agents can execute in
+        parallel across a service fleet, with machine-checkable gates deciding whether the result
+        is allowed to merge. The hard part isn't the model — it's shaping context agents can use,
+        constraints they can't argue with, and a verification story a human can audit in a minute.</p>
+        <p class="fineprint">Employer work, described at the level of craft rather than architecture.</p>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry__meta">
+        <span class="entry__yr">Before</span>
+        <span class="entry__role">Software Engineer</span>
+      </div>
+      <div class="entry__body">
+        <h3>Clientjoy, Gridle <span>— SaaS and productivity</span></h3>
+        <p>Client lifecycle management, then team productivity. Where the frontend habit was
+        formed and the taste for component APIs started.</p>
+        <p class="fineprint">[VERIFY: add two concrete outcomes per role — what you built, what moved.]</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ── craft ────────────────────────────────────────────────── -->
+  <section class="chapter" id="craft">
+    <p class="kicker"><span>04</span> Craft</p>
+    <div class="chapter__grid">
+      <h2 class="reveal">The tools are boring. The judgement isn't.</h2>
+      <div class="prose">
+        <dl class="stack reveal">
+          <div><dt>Core</dt><dd>React · TypeScript · Redux · SCSS · Vite · webpack</dd></div>
+          <div><dt>Server</dt><dd>Node · Laravel · REST · WebSockets</dd></div>
+          <div><dt>Infra</dt><dd>Docker · AWS · CI/CD</dd></div>
+          <div><dt>Systems</dt><dd>Design systems · component API design · Core Web Vitals · accessibility</dd></div>
+          <div><dt>Agentic</dt><dd>Agent tooling · MCP servers · spec-driven development · context engineering</dd></div>
+        </dl>
+        <p class="reveal">Seven years is long enough to have opinions. Two of them: a design
+        system nobody adopts is a folder of components, not a system. And performance work is a
+        design problem long before it's an engineering one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── contact ──────────────────────────────────────────────── -->
+  <section class="chapter chapter--end" id="contact">
+    <p class="kicker"><span>05</span> Contact</p>
+    <h2 class="display display--sm reveal">Let's talk.</h2>
+    <p class="reveal contact-note">Open to remote senior and lead frontend roles. Email is fastest.</p>
+    <ul class="links reveal">
+      <li><a href="mailto:bhautikbharadava@gmail.com" data-magnetic>bhautikbharadava@gmail.com</a></li>
+      <li><a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener" data-magnetic>GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/bhautikbharadava/" target="_blank" rel="noopener" data-magnetic>LinkedIn</a></li>
+      <li><a href="https://codepen.io/bhautikbharadava" target="_blank" rel="noopener" data-magnetic>CodePen</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p>The field behind this page is a lattice of points held by springs. It reads the speed of
+  your cursor, not its position — move slowly and it settles; move fast and it scatters. Nothing
+  is tracked, nothing is sent. Set your system to reduced motion and it stays perfectly still.</p>
+  <p class="colophon__sig">Built by hand. No framework, no build step.</p>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script src="src/app.js"></script>
+</body>
+</html>

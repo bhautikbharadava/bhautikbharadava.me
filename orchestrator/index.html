@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bhautik Bharadava — Senior Frontend Engineer</title>
+<meta name="description" content="Ask a question. This page plans, spawns agents, verifies, and assembles the answer. Senior frontend engineer, 7+ years of production React, building agentic delivery tooling." />
+<link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#corpus">Skip to full content</a>
+
+<header class="topbar">
+  <div class="topbar__id">
+    <span class="glyph"></span>
+    <b>bhautik</b><span class="sep">/</span><span class="dim">orchestrator</span>
+  </div>
+  <div class="topbar__status" id="topStatus">
+    <span class="pill" data-status="idle">IDLE</span>
+    <span class="topbar__meta" id="topMeta">awaiting intent</span>
+  </div>
+  <a class="topbar__esc" href="#corpus" id="escBtn">read it plainly &rarr;</a>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════
+     THE PROMPT
+     ══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <h1>
+    I'm <b>Bhautik Bharadava</b>. Senior frontend engineer,
+    seven years of production React, currently building the tooling
+    that lets agents ship software safely.
+  </h1>
+  <p class="hero__sub">
+    Rather than scroll a résumé, tell this page what you actually want to know.
+    It will plan, fan out, verify, and write itself.
+  </p>
+
+  <form class="intake" id="intake" autocomplete="off">
+    <label class="intake__field">
+      <span class="intake__caret">&gt;</span>
+      <input id="intentInput" type="text" placeholder="state an intent&hellip;"
+             aria-label="What do you want to know?" />
+      <button type="submit" class="intake__go" id="goBtn">
+        run <kbd>&crarr;</kbd>
+      </button>
+    </label>
+  </form>
+
+  <div class="chips" id="chips">
+    <button data-plan="fit">Is he a fit for a lead frontend role?</button>
+    <button data-plan="hardest">What's the hardest thing he's built?</button>
+    <button data-plan="now">What is he working on now?</button>
+    <button data-plan="resume">Just give me the résumé</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     THE RUN
+     ══════════════════════════════════════════════════════════════ -->
+<section class="run" id="run" hidden>
+
+  <div class="run__head">
+    <div class="run__spec">
+      <span class="k">SPEC</span>
+      <p id="specText">—</p>
+    </div>
+    <div class="run__ctl">
+      <span class="timer" id="timer">0.00s</span>
+      <button id="cancelBtn" class="ghost">cancel</button>
+      <button id="againBtn" class="ghost" hidden>ask something else</button>
+    </div>
+  </div>
+
+  <div class="run__grid">
+
+    <!-- dependency graph -->
+    <aside class="graph" aria-label="Execution graph">
+      <div class="panel__head">EXECUTION GRAPH</div>
+      <div class="graph__stage" id="graphStage">
+        <svg class="graph__edges" id="graphEdges" aria-hidden="true"></svg>
+      </div>
+
+      <div class="gates" id="gates">
+        <div class="panel__head">VERIFICATION GATES</div>
+        <ul id="gateList">
+          <li data-gate="grounded"><i></i>grounded in source</li>
+          <li data-gate="verified"><i></i>claims verified</li>
+          <li data-gate="drift"><i></i>no spec drift</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- agents -->
+    <div class="agents">
+      <div class="panel__head">
+        AGENTS <span id="agentTally">0/0</span>
+      </div>
+      <div class="agents__list" id="agentList"></div>
+    </div>
+
+  </div>
+
+  <!-- assembled answer -->
+  <div class="output" id="output"></div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     THE CORPUS
+     Every section the orchestrator can produce also lives here as
+     plain, crawlable, no-JS-required markup. The orchestration is
+     theatre over real content, never a substitute for it.
+     ══════════════════════════════════════════════════════════════ -->
+<section class="corpus" id="corpus">
+  <div class="corpus__head">
+    <h2>The plain version</h2>
+    <p>Everything above, without the ceremony. This is the whole site with JavaScript off.</p>
+  </div>
+
+  <article id="c-verdict">
+    <h3>Fit for a senior or lead frontend role</h3>
+    <p>Seven-plus years of production React, most recently as Senior Software Engineer II at
+    Genea, building the operator dashboard for a cloud-native access control platform — doors,
+    credentials, schedules, audit trails. The domain has an unusual property for frontend work:
+    a wrong state doesn't just look bad, it locks someone out of a building. That tends to make
+    you careful about state modelling.</p>
+    <p>The lead case rests on two things beyond shipping features. First, a design system of
+    micro components adopted across multiple product surfaces — the work of defining component
+    APIs other engineers have to live with. Second, current work on developer tooling for
+    spec-driven, multi-agent delivery: building for engineers, who are the least forgiving users
+    there are.</p>
+  </article>
+
+  <article id="c-evidence">
+    <h3>Evidence</h3>
+    <ul>
+      <li><b>Design system</b> — [XX] micro components, adopted across [XX] product surfaces,
+      reducing one-off UI by [XX]%.</li>
+      <li><b>Performance</b> — dashboard bundle reduced from [XX] to [XX]; Core Web Vitals
+      moved from [XX] to [XX].</li>
+      <li><b>Scope</b> — frontend architecture across web, mobile-access and integration surfaces
+      in a large microservice estate.</li>
+      <li><b>Mentorship</b> — [XX] engineers mentored, [XX] reviewed regularly.</li>
+      <li><b>Range</b> — Node and Laravel on the backend, Docker and AWS in the pipeline. Not a
+      frontend engineer who stops at the API boundary.</li>
+    </ul>
+    <p class="fineprint">Bracketed values are placeholders. Fill them in — numbers are what
+    actually move a senior hire.</p>
+  </article>
+
+  <article id="c-gaps">
+    <h3>Honest gaps</h3>
+    <p>Most of the last stretch has been one product and one domain, which builds depth at the
+    cost of breadth across industries. Formal people-management is limited — the leadership
+    evidence is technical leadership and system ownership rather than headcount. Both are worth
+    stating plainly rather than letting an interviewer discover them.</p>
+  </article>
+
+  <article id="c-problem">
+    <h3>The hardest thing: an operator surface that cannot be wrong</h3>
+    <p>An access control dashboard is a real-time view of physical infrastructure. Doors change
+    state from hardware, from other operators, and from schedules — all at once, all
+    asynchronously. The naive version drifts out of sync within minutes, and a stale door state
+    is worse than no state at all, because the operator trusts it.</p>
+  </article>
+
+  <article id="c-approach">
+    <h3>The approach</h3>
+    <p>Treat the UI as a projection of an event stream rather than a cache of REST responses:
+    one authoritative reducer, optimistic updates that are explicitly reconciled, and a visible
+    staleness indicator instead of a silent lie. Then make the component layer boring on purpose
+    — a small set of primitives with tight APIs, so that the interesting complexity stays in one
+    place where it can be reasoned about.</p>
+  </article>
+
+  <article id="c-outcome">
+    <h3>The outcome</h3>
+    <p>[VERIFY: this is where a number belongs. Support tickets about stale state, time to
+    render a door list, incident count, operator task completion time — whatever you actually
+    moved.]</p>
+  </article>
+
+  <article id="c-now">
+    <h3>What I'm building now</h3>
+    <p>Developer tooling for spec-driven, multi-agent delivery: taking a written specification
+    and turning it into work that AI agents can execute in parallel across a service fleet,
+    with machine-checkable gates deciding whether the result is allowed to ship.</p>
+    <p>The interesting problem isn't the model — it's the interface. Agents need context shaped
+    for them, constraints they can't argue with, and a verification story a human can audit in
+    under a minute. That is a frontend problem wearing a backend costume, which is why I like it.</p>
+    <p class="fineprint">This is work done at Genea. Described here at the level of craft, not
+    architecture.</p>
+  </article>
+
+  <article id="c-facts">
+    <h3>Quick facts</h3>
+    <dl>
+      <div><dt>Now</dt><dd>Senior Software Engineer II, Genea — cloud-native access control</dd></div>
+      <div><dt>Before</dt><dd>Clientjoy · Gridle</dd></div>
+      <div><dt>Study</dt><dd>B.E. Computer Science, L.D. College of Engineering, 2014–18</dd></div>
+      <div><dt>Based</dt><dd>Ahmedabad, IN · IST (UTC+5:30) · remote-ready</dd></div>
+      <div><dt>Core</dt><dd>React · TypeScript · Redux · SCSS · Vite · webpack</dd></div>
+      <div><dt>Also</dt><dd>Node · Laravel · Docker · AWS · MCP · agent tooling</dd></div>
+      <div><dt>Looking for</dt><dd>Remote senior or lead frontend role</dd></div>
+    </dl>
+  </article>
+
+  <article id="c-contact">
+    <h3>Contact</h3>
+    <p class="links">
+      <a href="mailto:bhautikbharadava@gmail.com">bhautikbharadava@gmail.com</a>
+      <a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/bhautikbharadava/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://codepen.io/bhautikbharadava" target="_blank" rel="noopener">CodePen</a>
+    </p>
+  </article>
+
+  <footer class="colophon">
+    <p>The orchestration above is real — a genuine dependency graph, scheduled in parallel,
+    cancellable mid-flight. The content it assembles is written by hand, because a portfolio
+    that hallucinates about its author is a liability. No network calls; nothing leaves the page.</p>
+  </footer>
+</section>
+
+<script src="src/app.js"></script>
+</body>
+</html>

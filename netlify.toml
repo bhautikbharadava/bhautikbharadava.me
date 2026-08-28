@@ -1,0 +1,15 @@
+# Preview-only branch: a gallery of all four portfolio concepts at one URL.
+# Not for merging — it would ship four portfolios to the homepage.
+
+# Nothing here should ever be indexed.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*/src/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
