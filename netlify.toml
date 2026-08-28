@@ -1,8 +1,26 @@
 # Static site — no build step.
 #
-# Deliberately no [build] section: this repo has deployed from its root via the
-# site's dashboard settings since 2018. Declaring publish/command here would
-# override those working settings, so we only add headers.
+# Deliberately no publish/command here: this repo publishes from its root via
+# the site's dashboard settings (publishOrigin: ui). Declaring them would
+# override those known-good settings.
+
+[build.environment]
+  # WORKAROUND, not a preference. The site has @netlify/plugin-lighthouse
+  # installed from the Netlify UI, and that plugin declares engines
+  # ">=14.15 <20". Netlify's default runtime is now Node 22, so every build
+  # fails at config resolution before it ever publishes:
+  #
+  #   The Node.js version is 22.23.1 but the plugin
+  #   "@netlify/plugin-lighthouse" requires >=14.15 <20
+  #
+  # This has nothing to do with the site itself, which has no build step at
+  # all — Node is used solely to run that plugin.
+  #
+  # The real fix is to remove the Lighthouse plugin in the Netlify UI
+  # (Project configuration → Build & deploy → Plugins), then delete this
+  # block. Node 18 is past end-of-life, and pinning to it is only tolerable
+  # because it never touches anything the visitor receives.
+  NODE_VERSION = "18"
 
 [[headers]]
   for = "/*"
