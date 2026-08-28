@@ -4,7 +4,9 @@
 # the site's dashboard settings (publishOrigin: ui). Declaring them would
 # override those known-good settings.
 
-# The site has @netlify/plugin-lighthouse installed from the Netlify UI, pinned
+# ⚠ BUILDS ARE CURRENTLY BLOCKED — and not by anything in this repo.
+#
+# The site has @netlify/plugin-lighthouse installed at the site level, pinned
 # to major v4. That version declares engines ">=14.15 <20" while Netlify's
 # build image now runs Node 22, so config resolution fails before the site is
 # ever published:
@@ -12,13 +14,24 @@
 #   The Node.js version is 22.23.1 but the plugin
 #   "@netlify/plugin-lighthouse" requires >=14.15 <20
 #
-# Setting NODE_VERSION does not help — plugin compatibility is checked against
-# the build image's own Node, not the version requested for the build.
+# This predates the redesign. The site simply has not been rebuilt since May
+# 2023, and Netlify's default Node moved on underneath it.
 #
-# Declaring the plugin here instead: file config takes precedence over the UI
-# entry, which should resolve a current version whose engines allow Node 22.
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
+# Two repo-side fixes were tried and neither works:
+#   1. NODE_VERSION = "18" — applied (it appeared in the resolved env) but the
+#      runtime stayed 22, because plugin engines are checked against the build
+#      image's own Node, not the version requested for the build.
+#   2. Declaring the plugin here — took precedence (origin flipped ui→config)
+#      but Netlify still installed v4, since the version pin lives at the site
+#      level rather than in this file.
+#
+# THE FIX, in the Netlify UI:
+#   Project configuration → Build & deploy → Build plugins → remove
+#   "Lighthouse". The site has no build step at all, so Node exists solely to
+#   run that plugin; removing it unblocks every deploy.
+#
+# If you want Lighthouse reports back afterwards, install a current version
+# rather than v4.
 
 [[headers]]
   for = "/*"

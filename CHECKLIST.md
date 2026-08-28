@@ -46,9 +46,10 @@ The `agentic-tooling` project card describes internal Genea work. It's written a
 
 The repo is already connected to Netlify (site `bhautikbharadava`, live at **bhautikbharadava.me**), so the domain and pipeline are done. What remains:
 
-- [x] ~~Buy a domain~~ — already yours
-- [x] ~~Replace the canonical / og:url placeholder~~ — now `https://bhautikbharadava.me/`
+- [ ] **`bhautikbharadava.me` does not resolve — NXDOMAIN.** The domain is not answering DNS at all, so the site is currently reachable only at `bhautikbharadava.netlify.app`. Either renew/re-point the domain, or decide to live on the netlify.app host. Until it resolves, `canonical`, `og:url` and `og:image` point at netlify.app; switch all three back once it works.
+- [x] ~~Replace the canonical / og:url placeholder~~ — set, currently to the netlify.app host (see above)
 - [x] ~~Social preview~~ — `og:image` points at `images/Avatar.png`, which suits the `summary` card. If you'd rather have a wide card, make a 1200×630 PNG, save it as `og.png`, point `og:image` at it and switch `twitter:card` to `summary_large_image`.
+- [ ] **Netlify builds are blocked** by the site-level `@netlify/plugin-lighthouse` v4 pin, which requires Node <20 while the build image runs Node 22. This predates the redesign — no deploy of this site can succeed today, `master` included. Fix: **Project configuration → Build & deploy → Build plugins → remove "Lighthouse"**. Details and the two repo-side workarounds that don't work are documented in `netlify.toml`.
 - [ ] **Merge `redesign/source` into `master`.** That is what replaces the live site — do it only once the placeholders above are filled.
 
 ### Two things removed from the old site — restore them if you disagree
