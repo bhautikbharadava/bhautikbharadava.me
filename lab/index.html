@@ -6,7 +6,7 @@
 
 <title>Bhautik Bharadava — Lab</title>
 <meta name="description" content="The loud version. Senior frontend engineer, 8+ years, frontend owner for a security-focused multi-tenant enterprise SaaS." />
-<meta name="theme-color" content="#0b0908" />
+<meta name="theme-color" content="#04050d" />
 <link rel="canonical" href="https://bhautikbharadava.netlify.app/lab/" />
 
 <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
@@ -21,8 +21,26 @@
 
 <canvas id="gl" aria-hidden="true"></canvas>
 <div class="scrim" aria-hidden="true"></div>
+<div class="grid" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
-<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<!-- HUD. Decorative, so it is hidden from assistive tech entirely. The clock
+     and coordinates are real; uptime is time since this page opened. -->
+<div class="hud" aria-hidden="true">
+  <span class="hud__c hud__c--tl"></span><span class="hud__c hud__c--tr"></span>
+  <span class="hud__c hud__c--bl"></span><span class="hud__c hud__c--br"></span>
+  <div class="hud__top">
+    <span><b>BB-01</b> · 23.0225°N 72.5714°E · Ahmedabad</span>
+    <span>IST <b id="clock">--:--:--</b> · UP <b id="uptime">00:00</b></span>
+  </div>
+  <div class="hud__bot">
+    <span>SIG <i>NOMINAL</i> · WebGL <b>ACTIVE</b></span>
+    <span>DEPTH <b id="scrollPct">000</b>%</span>
+  </div>
+  <span class="hud__scan"></span>
+</div>
+
+<div class="reticle" id="reticle" aria-hidden="true"><b></b></div>
 
 <a class="switch" href="../">← Quiet version</a>
 
@@ -31,7 +49,7 @@
   <header class="hero">
     <p class="kicker"><span data-scramble>SENIOR FRONTEND ENGINEER</span></p>
     <h1>
-      <span data-scramble>BHAUTIK</span>
+      <span class="solid" data-scramble>BHAUTIK</span>
       <span class="thin" data-scramble>BHARADAVA</span>
     </h1>
     <div class="hero__foot">
@@ -53,7 +71,7 @@
     <!-- ── Experience ─────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">01 — Experience</p>
+      <p class="band__no">SEC 01 // Experience</p>
 
       <article class="job rise">
         <div class="job__yr">2020<br />—</div>
@@ -99,7 +117,7 @@
     <!-- ── Work ───────────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">02 — Selected work</p>
+      <p class="band__no">SEC 02 // Selected work</p>
 
       <article class="case rise">
         <h3>Owning a frontend platform</h3>
@@ -145,7 +163,7 @@
     <!-- ── Beliefs ────────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">03 — How I work</p>
+      <p class="band__no">SEC 03 // How I work</p>
 
       <div class="creed rise">
         <span>01</span>
@@ -185,7 +203,7 @@
     <!-- ── Stack ──────────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">04 — Stack</p>
+      <p class="band__no">SEC 04 // Stack</p>
       <dl class="rows rise">
         <div><dt>Frontend</dt><dd>React · JavaScript (ES6+) · Redux · Context API · React Router · Ant Design · Bootstrap</dd></div>
         <div><dt>Build</dt><dd>Webpack · Vite · Module Federation · bundle analysis</dd></div>
@@ -198,7 +216,7 @@
     <!-- ── Elsewhere ──────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">05 — Elsewhere</p>
+      <p class="band__no">SEC 05 // Elsewhere</p>
       <ul class="out rise">
         <li>
           <a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">
@@ -224,7 +242,7 @@
     <!-- ── Looking for ────────────────────────────────────────── -->
 
     <section class="band">
-      <p class="band__no">06 — What I'm looking for</p>
+      <p class="band__no">SEC 06 // What I'm looking for</p>
       <dl class="rows rise">
         <div><dt>Role</dt><dd>Senior or lead frontend — ownership of the platform, not just the tickets</dd></div>
         <div><dt>Where</dt><dd>Remote · comfortable with EU and US-morning overlap from IST</dd></div>

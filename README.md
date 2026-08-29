@@ -12,9 +12,9 @@ python3 -m http.server 8000
 
 ## Two versions
 
-`/` is the quiet one — warm, light, content-first. `/lab/` is the loud one: a hand-written WebGL
-fragment shader, oversized type, scramble reveals and a custom cursor. Same content, same person,
-different volume.
+`/` is the quiet one — warm, light, content-first. `/lab/` is a deep space console: nebula and
+parallax starfield in a hand-written WebGL shader, a HUD with live telemetry, decoding type and a
+targeting reticle for a cursor. Same content, same person, very different volume.
 
 They are **separate routes rather than a toggle** on purpose. A recruiter opening the site on a
 train should never download a shader, so the default page stays static and fast; the lab gets to
@@ -50,13 +50,18 @@ CHECKLIST.md      what still needs filling in
 
 ## About the shader
 
-`lab/app.js` is hand-written WebGL — no Three.js, no libraries. Domain-warped fbm through a warm
-ramp, pushed around by a lagged cursor and by scroll. One fullscreen triangle, one pass. Device
-pixel ratio is capped at 1.75 (a full-screen fbm at 3× is a heater), rendering pauses when the tab
-is hidden, and if the context fails to create, a CSS gradient stands in and the page carries on.
+`lab/app.js` is hand-written WebGL — no Three.js, no libraries. A domain-warped fbm nebula plus
+three parallax star layers, gravitationally lensed around the pointer and drifting forward as you
+scroll. One fullscreen triangle, one pass.
 
-A scrim sits between the shader and the text: the field swings bright amber, and body copy over an
-unconstrained shader is a legibility gamble.
+Defensive by construction: device pixel ratio capped at 1.6 (a fullscreen 6-octave fbm at 3× is a
+laptop heater), rendering pauses when the tab is hidden, and if the context fails to create, a CSS
+field stands in and the page carries on. A scrim sits between the shader and the text, because
+body copy over an unconstrained shader is a legibility gamble.
+
+The HUD readouts are real where real values exist: the clock is Bhautik's actual local time and
+the coordinates are Ahmedabad. Uptime is time since the page opened — the one honestly synthetic
+number.
 
 ## History
 

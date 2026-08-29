@@ -1,10 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
-   LAB — the loud one.
+   LAB — deep space console.
 
-   A hand-written WebGL fragment shader (no libraries), plus scroll
-   and cursor choreography. Everything here is progressive: if WebGL
-   is unavailable, the shader is skipped and a CSS gradient stands in.
-   The content is plain DOM and never depends on any of it.
+   Hand-written WebGL: parallax starfield + domain-warped nebula,
+   gravitationally lensed around the cursor, drifting with scroll.
+   No libraries.
+
+   Everything is progressive. If the context fails, a CSS field
+   stands in. The content is plain DOM and never depends on any of it.
    ═══════════════════════════════════════════════════════════════ */
 
 (() => {
@@ -15,9 +17,7 @@
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ───────────────────────────────────────────────────────────
-     1 · THE SHADER
-     Domain-warped fbm, coloured through a warm ramp, pushed
-     around by the cursor. One fullscreen triangle, one pass.
+     1 · THE FIELD
      ─────────────────────────────────────────────────────────── */
 
   const VERT = `
@@ -39,54 +39,86 @@
 
     float noise(vec2 p){
       vec2 i = floor(p), f = fract(p);
-      vec2 u = f * f * (3.0 - 2.0 * f);           // smoothstep
-      return mix(mix(hash(i + vec2(0.0,0.0)), hash(i + vec2(1.0,0.0)), u.x),
-                 mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
+      vec2 u = f * f * (3.0 - 2.0 * f);
+      return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+                 mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);
     }
 
     float fbm(vec2 p){
       float v = 0.0, a = 0.5;
-      for (int i = 0; i < 5; i++){
+      for (int i = 0; i < 6; i++){
         v += a * noise(p);
-        p = p * 2.02;
+        p *= 2.03;
         a *= 0.5;
       }
       return v;
+    }
+
+    // one sparse layer of stars. no branching — step() keeps it uniform.
+    float starLayer(vec2 p, float density, float thresh, float t){
+      vec2 g = p * density;
+      vec2 i = floor(g), f = fract(g);
+      float h = hash(i);
+      float present = step(thresh, h);
+      vec2  c = vec2(hash(i + 13.1), hash(i + 71.7));
+      float d = length(f - c);
+      float twinkle = 0.55 + 0.45 * sin(t * 2.1 + h * 60.0);
+      return present * smoothstep(0.06, 0.0, d) * twinkle;
     }
 
     void main(){
       vec2 uv = gl_FragCoord.xy / u_res;
       vec2 p  = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y;
 
-      float t = u_time * 0.055 + u_scroll * 1.6;
+      float t = u_time * 0.03;
 
-      // domain warping — the thing that makes fbm look like smoke
-      vec2 q = vec2(fbm(p * 1.6 + t), fbm(p * 1.6 + vec2(5.2, 1.3) - t));
-      vec2 r = vec2(fbm(p * 1.6 + 2.0 * q + vec2(1.7, 9.2) + 0.15 * t),
-                    fbm(p * 1.6 + 2.0 * q + vec2(8.3, 2.8) + 0.126 * t));
-      float f = fbm(p * 1.6 + 2.2 * r);
+      // gravitational lensing around the pointer
+      vec2  m    = (u_mouse - 0.5) * vec2(u_res.x / u_res.y, 1.0);
+      vec2  toM  = p - m;
+      float r    = length(toM);
+      float lens = 0.055 / (r * r + 0.055);
+      p -= normalize(toM + 1e-6) * lens * 0.16;
 
-      // the cursor pushes heat into the field
-      vec2 m = (u_mouse - 0.5) * vec2(u_res.x / u_res.y, 1.0);
-      float d = length(p - m);
-      f += 0.30 * exp(-d * 2.6);
+      // drift forward as you scroll
+      float depth = u_scroll * 2.4;
 
-      vec3 ink   = vec3(0.043, 0.033, 0.028);
-      vec3 clay  = vec3(0.702, 0.341, 0.173);
-      vec3 amber = vec3(0.960, 0.639, 0.263);
+      // nebula — domain-warped fbm, two octabves of warp
+      vec2 q = vec2(fbm(p * 1.1 + t), fbm(p * 1.1 + vec2(3.4, 1.2) - t));
+      vec2 w = vec2(fbm(p * 1.1 + 1.8 * q + vec2(1.7, 9.2) + 0.11 * t),
+                    fbm(p * 1.1 + 1.8 * q + vec2(8.3, 2.8) + 0.09 * t));
+      float neb = fbm(p * 1.1 + 2.4 * w + vec2(0.0, depth * 0.35));
 
-      vec3 col = mix(ink, clay, smoothstep(0.18, 0.82, f));
-      col = mix(col, amber, smoothstep(0.68, 1.05, f) * 0.75);
+      vec3 void_     = vec3(0.010, 0.014, 0.038);
+      vec3 violet   = vec3(0.290, 0.180, 0.640);
+      vec3 cyan     = vec3(0.130, 0.600, 0.780);
+      vec3 magenta  = vec3(0.720, 0.220, 0.520);
+
+      vec3 col = void_;
+      col = mix(col, violet,  smoothstep(0.30, 0.82, neb) * 1.00);
+      col = mix(col, cyan,    smoothstep(0.52, 0.96, neb) * 0.70);
+      col = mix(col, magenta, smoothstep(0.64, 1.00, neb) * 0.48);
+
+      // three parallax star layers, nearest drifting fastest
+      // densities are cells-per-unit; at ~3 units across the screen a density
+      // of 16 is only ~48 cells wide, so these need to be high to read as sky
+      float s = 0.0;
+      s += starLayer(p + vec2(0.0, depth * 0.10), 16.0, 0.940, u_time) * 0.45;
+      s += starLayer(p + vec2(0.0, depth * 0.28), 30.0, 0.965, u_time) * 0.75;
+      s += starLayer(p + vec2(0.0, depth * 0.58), 52.0, 0.982, u_time) * 1.00;
+      col += vec3(0.82, 0.88, 1.0) * s;
+
+      // the pointer is a faint light source
+      col += vec3(0.24, 0.52, 0.85) * exp(-r * 3.4) * 0.16;
 
       // vignette, then grain so the gradient never bands
-      col *= 1.0 - 0.55 * length(uv - 0.5);
-      col += (hash(gl_FragCoord.xy + fract(u_time)) - 0.5) * 0.035;
+      col *= 1.0 - 0.62 * length(uv - 0.5);
+      col += (hash(gl_FragCoord.xy + fract(u_time)) - 0.5) * 0.028;
 
       gl_FragColor = vec4(col, 1.0);
     }
   `;
 
-  function initShader() {
+  function initField() {
     const canvas = $('#gl');
     if (!canvas) return false;
 
@@ -99,7 +131,7 @@
       gl.shaderSource(sh, src);
       gl.compileShader(sh);
       if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-        console.warn('[lab] shader failed:', gl.getShaderInfoLog(sh));
+        console.warn('[lab] shader:', gl.getShaderInfoLog(sh));
         return null;
       }
       return sh;
@@ -114,15 +146,14 @@
     gl.attachShader(prog, fs);
     gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.warn('[lab] link failed:', gl.getProgramInfoLog(prog));
+      console.warn('[lab] link:', gl.getProgramInfoLog(prog));
       return false;
     }
     gl.useProgram(prog);
 
-    // one oversized triangle covers the viewport with no seam
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(prog, 'a_pos');
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
@@ -132,8 +163,8 @@
     const uMouse  = gl.getUniformLocation(prog, 'u_mouse');
     const uScroll = gl.getUniformLocation(prog, 'u_scroll');
 
-    // cap DPR — a full-screen fbm at 3x on a retina display is a heater
-    const DPR = Math.min(devicePixelRatio || 1, 1.75);
+    // a fullscreen 6-octave fbm at 3× is a laptop heater
+    const DPR = Math.min(devicePixelRatio || 1, 1.6);
 
     function resize() {
       const w = Math.floor(innerWidth * DPR);
@@ -164,8 +195,8 @@
 
     function frame(now) {
       if (!running) return;
-      mx += (tx - mx) * 0.05;             // lag the cursor, it feels like fluid
-      my += (ty - my) * 0.05;
+      mx += (tx - mx) * 0.045;
+      my += (ty - my) * 0.045;
       gl.uniform1f(uTime, still ? 0 : (now - start) / 1000);
       gl.uniform2f(uMouse, mx, my);
       gl.uniform1f(uScroll, scroll);
@@ -174,87 +205,117 @@
     }
     requestAnimationFrame(frame);
 
-    // don't burn a GPU on a tab nobody is looking at
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { running = false; }
-      else if (!running)   { running = true; requestAnimationFrame(frame); }
+      if (document.hidden) running = false;
+      else if (!running) { running = true; requestAnimationFrame(frame); }
     });
 
     document.body.classList.add('gl-on');
     return true;
   }
 
-  if (!initShader()) document.body.classList.add('gl-off');
+  if (!initField()) document.body.classList.add('gl-off');
 
   /* ───────────────────────────────────────────────────────────
-     2 · TEXT THAT ARRIVES
+     2 · TELEMETRY
+     Real values where real values exist. The clock is his actual
+     local time; the coordinates are Ahmedabad.
      ─────────────────────────────────────────────────────────── */
 
-  const GLYPHS = '▚▞█▓▒░/\\<>*+=-_:.';
+  const clock = $('#clock');
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false, timeZone: 'Asia/Kolkata'
+    });
+    const tick = () => clock.textContent = fmt.format(new Date());
+    tick();
+    setInterval(tick, 1000);
+  }
 
-  function scramble(el, delay = 0) {
+  // uptime since the page opened — the one honestly synthetic readout
+  const upEl = $('#uptime');
+  if (upEl) {
+    const t0 = Date.now();
+    setInterval(() => {
+      const s = Math.floor((Date.now() - t0) / 1000);
+      upEl.textContent =
+        String((s / 60) | 0).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }, 1000);
+  }
+
+  const scrollOut = $('#scrollPct');
+  if (scrollOut) {
+    addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const pct = max > 0 ? Math.round((scrollY / max) * 100) : 0;
+      scrollOut.textContent = String(pct).padStart(3, '0');
+    }, { passive: true });
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     3 · TEXT THAT DECODES
+     ─────────────────────────────────────────────────────────── */
+
+  const GLYPHS = '▚▞█▓▒░/\\<>*+=-_:.01';
+
+  function decode(el, delay = 0) {
     const target = el.dataset.text || el.textContent;
     if (still) { el.textContent = target; return; }
     el.textContent = '';
 
     setTimeout(() => {
       let frame = 0;
-      const total = target.length;
       const id = setInterval(() => {
         frame++;
-        // settle one character every other frame, scramble the rest
         const settled = Math.floor(frame / 2);
         let out = '';
-        for (let i = 0; i < total; i++) {
+        for (let i = 0; i < target.length; i++) {
           if (target[i] === ' ') { out += ' '; continue; }
-          out += i < settled ? target[i]
-               : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+          out += i < settled ? target[i] : GLYPHS[(Math.random() * GLYPHS.length) | 0];
         }
         el.textContent = out;
-        if (settled >= total) { el.textContent = target; clearInterval(id); }
-      }, 34);
+        if (settled >= target.length) { el.textContent = target; clearInterval(id); }
+      }, 32);
     }, delay);
   }
 
-  $$('[data-scramble]').forEach((el, i) => scramble(el, 220 + i * 90));
+  $$('[data-scramble]').forEach((el, i) => decode(el, 260 + i * 90));
 
   /* ───────────────────────────────────────────────────────────
-     3 · SCROLL REVEALS
+     4 · SCROLL REVEALS
      ─────────────────────────────────────────────────────────── */
 
-  const seen = new IntersectionObserver(entries => {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
-      if (en.isIntersecting) {
-        en.target.classList.add('is-in');
-        seen.unobserve(en.target);
-      }
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
     });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
 
-  $$('.rise').forEach(el => seen.observe(el));
+  $$('.rise').forEach(el => io.observe(el));
 
   /* ───────────────────────────────────────────────────────────
-     4 · CURSOR
+     5 · RETICLE
      ─────────────────────────────────────────────────────────── */
 
-  const cur = $('#cursor');
+  const cur = $('#reticle');
   if (cur && matchMedia('(hover: hover) and (pointer: fine)').matches && !still) {
     let cx = innerWidth / 2, cy = innerHeight / 2, x = cx, y = cy;
     addEventListener('pointermove', e => { cx = e.clientX; cy = e.clientY; }, { passive: true });
     (function loop() {
-      x += (cx - x) * 0.18;
-      y += (cy - y) * 0.18;
+      x += (cx - x) * 0.2;
+      y += (cy - y) * 0.2;
       cur.style.transform = `translate(${x}px, ${y}px)`;
       requestAnimationFrame(loop);
     })();
     document.addEventListener('pointerover', e => {
-      cur.classList.toggle('is-live', !!e.target.closest('a, button'));
+      cur.classList.toggle('is-locked', !!e.target.closest('a, button'));
     });
-    document.body.classList.add('has-cursor');
+    document.body.classList.add('has-reticle');
   }
 
   /* ───────────────────────────────────────────────────────────
-     5 · HOUSEKEEPING
+     6 · HOUSEKEEPING
      ─────────────────────────────────────────────────────────── */
 
   $('#year').textContent = new Date().getFullYear();
@@ -262,6 +323,6 @@
   const todos = $$('[data-todo]').length;
   if (todos) {
     console.warn(`%c[lab] ${todos} unfilled placeholder${todos === 1 ? '' : 's'}.`,
-                 'color:#f0a04b;font-weight:bold');
+                 'color:#5ad4e6;font-weight:bold');
   }
 })();
