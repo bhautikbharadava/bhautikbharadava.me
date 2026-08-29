@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Not found — Bhautik Bharadava</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#faf7f2" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="src/styles.css" />
+<style>
+  .lost{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-top:0;padding-bottom:0;
+  }
+  .lost h1{font-size:clamp(32px,5.5vw,46px)}
+  .lost p.say{margin-top:18px;color:var(--ink-2);font-size:18px}
+  .lost code{
+    font-family:var(--mono);font-size:14px;
+    color:var(--accent-ink);background:var(--accent-soft);
+    border:1px solid var(--accent-line);
+    padding:2px 8px;border-radius:6px;word-break:break-all;
+  }
+  .lost .links{margin-top:30px}
+</style>
+</head>
+<body>
+<div class="page lost">
+  <p class="section__title" style="margin-bottom:20px">404</p>
+  <h1>That page doesn't exist.</h1>
+  <p class="say">Nothing at <code id="path">this address</code>. The site is a single page, so
+  almost everything lives at the root.</p>
+  <nav class="links">
+    <a href="/">Back to the start</a>
+    <a href="mailto:bhautikbharadava@gmail.com">Email me</a>
+  </nav>
+</div>
+<script>
+  // textContent, so a crafted path can't inject markup
+  document.getElementById('path').textContent = location.pathname;
+</script>
+</body>
+</html>
