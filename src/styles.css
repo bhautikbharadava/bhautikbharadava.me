@@ -339,6 +339,14 @@ h1{
 }
 .linkish:hover{color:var(--accent-ink)}
 
+.foot__right{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.lab-link{
+  color:var(--accent-ink);text-decoration:none;
+  border-bottom:1px solid var(--accent-line);
+  padding-bottom:1px;transition:border-color .2s;
+}
+.lab-link:hover{border-bottom-color:var(--accent)}
+
 /* ───────────────────────────────────────────────────────────────
    PLACEHOLDERS — unfilled content must be impossible to miss
    ─────────────────────────────────────────────────────────────── */
@@ -409,7 +417,7 @@ a:focus-visible,button:focus-visible{
 
   body{background:#fff;color:#111;font-size:10pt}
   .page{max-width:none;padding:0}
-  .rail,.skip,.links,.foot__meta,.avatar,.status{display:none!important}
+  .rail,.skip,.links,.foot__meta,.avatar,.status,.lab-link{display:none!important}
   .masthead > *{animation:none!important;opacity:1!important;transform:none!important}
 
   .masthead{padding-bottom:5mm;border-bottom:1.2pt solid #111}

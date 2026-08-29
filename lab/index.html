@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Bhautik Bharadava — Lab</title>
+<meta name="description" content="The loud version. Senior frontend engineer, 8+ years, frontend owner for a security-focused multi-tenant enterprise SaaS." />
+<meta name="theme-color" content="#0b0908" />
+<link rel="canonical" href="https://bhautikbharadava.netlify.app/lab/" />
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<a class="switch" href="../">← Quiet version</a>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker"><span data-scramble>SENIOR FRONTEND ENGINEER</span></p>
+    <h1>
+      <span data-scramble>BHAUTIK</span>
+      <span class="thin" data-scramble>BHARADAVA</span>
+    </h1>
+    <div class="hero__foot">
+      <p class="hero__blurb">
+        Eight years building web applications, the last six owning the frontend platform of a
+        security-focused, multi-tenant enterprise SaaS — architecture, tooling and technical
+        direction for software where a wrong state locks someone out of a building.
+      </p>
+      <p class="hero__meta">
+        <b>Open to senior &amp; lead roles</b>
+        Ahmedabad, IN · UTC+5:30<br />
+        Remote
+      </p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Experience ─────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">01 — Experience</p>
+
+      <article class="job rise">
+        <div class="job__yr">2020<br />—</div>
+        <div>
+          <h3>Genea</h3>
+          <p class="job__what">Senior Software Engineer, Frontend Owner · enterprise access control</p>
+          <p>I own the frontend platform end-to-end for a security-focused, multi-tenant SaaS used
+          by global customers, and act as the primary frontend decision-maker: architecture,
+          tooling, Webpack bundling strategy, and long-term technical direction.</p>
+          <ul class="stats">
+            <li><b>6 yrs</b><span>owning the frontend platform</span></li>
+            <li><b>30%</b><span>faster builds after the Webpack work</span></li>
+            <li><b>3–5</b><span>engineers mentored</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job rise">
+        <div class="job__yr">2019<br />—<br />2020</div>
+        <div>
+          <h3>Sequr<em>acquired by Genea</em></h3>
+          <p class="job__what">Frontend Engineer · visitor management &amp; access control</p>
+          <p>Built secure, real-time frontend modules for visitor management and access control,
+          and the reusable React components the product standardised on — integrating a spread of
+          backend and microservice APIs into a single coherent frontend layer.</p>
+        </div>
+      </article>
+
+      <article class="job rise">
+        <div class="job__yr">2017<br />—<br />2019</div>
+        <div>
+          <h3>Gridle</h3>
+          <p class="job__what">Software Engineer, previously Intern · CRM &amp; collaboration</p>
+          <p>Full-stack work in Laravel and Django, with responsive mobile-first UIs and REST APIs
+          for data processing, access control and reporting. Where the frontend habit formed.</p>
+          <ul class="stats">
+            <li><b>~50%</b><span>increase in user engagement from UI/UX and performance work</span></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ── Work ───────────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">02 — Selected work</p>
+
+      <article class="case rise">
+        <h3>Owning a frontend platform</h3>
+        <div class="case__grid">
+          <div><h4>Problem</h4><p>A multi-tenant enterprise product accumulates frontend decisions
+          faster than anyone reviews them. Without a single owner, each team solves bundling, state
+          and permissions slightly differently.</p></div>
+          <div><h4>Approach</h4><p>Be the decision-maker rather than the reviewer. Set the
+          architecture, the Webpack strategy and the standards — then enforce them through review
+          and hands-on work rather than documents.</p></div>
+          <div><h4>Result</h4><p>Six years as the frontend authority on a product used by global
+          customers, and 3–5 engineers carrying those standards forward.</p></div>
+        </div>
+      </article>
+
+      <article class="case rise">
+        <h3>RBAC &amp; secure UI</h3>
+        <div class="case__grid">
+          <div><h4>Problem</h4><p>In a multi-tenant security product, permissions aren't a feature —
+          they're the substrate. Getting one wrong is an incident, not a bug report.</p></div>
+          <div><h4>Approach</h4><p>Model permissions as a first-class part of the architecture
+          instead of scattered conditionals: enterprise RBAC, cookie-based auth, secure workflows
+          designed with the security team rather than bolted on after.</p></div>
+          <div><h4>Result</h4><p>Permission logic auditable in one place — the only version of this
+          that survives a security review.</p></div>
+        </div>
+      </article>
+
+      <article class="case rise">
+        <h3>Legacy modernisation</h3>
+        <div class="case__grid">
+          <div><h4>Problem</h4><p>An enterprise dashboard grown over years carries weight nobody
+          chose: stale dependencies, a bundle that ships everything to everyone.</p></div>
+          <div><h4>Approach</h4><p>From the build inward — Webpack optimisation, bundle splitting,
+          tree-shaking, dependency cleanup — then from the runtime outward with lazy loading and
+          continuous bundle analysis.</p></div>
+          <div><h4>Result</h4><p>Build times down 30%. It compounds in a way user-facing metrics
+          don't — repaid on every push, by every engineer, for the life of the project.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ── Beliefs ────────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">03 — How I work</p>
+
+      <div class="creed rise">
+        <span>01</span>
+        <div>
+          <h3>Ownership means deciding, not reviewing.</h3>
+          <p>A frontend owner who only comments on pull requests isn't one. The architecture, the
+          build strategy and the standards have to be someone's call — and then that person has to
+          live in the code.</p>
+        </div>
+      </div>
+      <div class="creed rise">
+        <span>02</span>
+        <div>
+          <h3>Performance is a design problem first.</h3>
+          <p>Most of the weight I've removed from a bundle was decided in a layout, not in a
+          Webpack config. The engineering part is usually the last twenty percent.</p>
+        </div>
+      </div>
+      <div class="creed rise">
+        <span>03</span>
+        <div>
+          <h3>An interface should admit what it doesn't know.</h3>
+          <p>A visible staleness indicator beats a confident wrong number every time. That matters
+          more in software controlling physical doors, but it is never not true.</p>
+        </div>
+      </div>
+      <div class="creed rise">
+        <span>04</span>
+        <div>
+          <h3>Build for the engineers who come after you.</h3>
+          <p>Component APIs, tooling and standards are the parts of the job with compounding
+          returns. They are also the parts most easily deferred forever.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stack ──────────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">04 — Stack</p>
+      <dl class="rows rise">
+        <div><dt>Frontend</dt><dd>React · JavaScript (ES6+) · Redux · Context API · React Router · Ant Design · Bootstrap</dd></div>
+        <div><dt>Build</dt><dd>Webpack · Vite · Module Federation · bundle analysis</dd></div>
+        <div><dt>Backend</dt><dd>Node · Express · REST · cookie-based auth · Laravel · Django</dd></div>
+        <div><dt>Cloud</dt><dd>GitHub Actions · Docker · AWS (ECR, S3) · Terraform · Cloudflare CDN</dd></div>
+        <div><dt>Practice</dt><dd>Frontend system design · performance · security-aware UI · accessibility</dd></div>
+      </dl>
+    </section>
+
+    <!-- ── Elsewhere ──────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">05 — Elsewhere</p>
+      <ul class="out rise">
+        <li>
+          <a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">
+            <span class="k">GitHub</span>
+            <span><b>Repositories</b><span class="d">Libraries, experiments, and the long tail of things built to understand them.</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://codepen.io/bhautikbharadava" target="_blank" rel="noopener">
+            <span class="k">CodePen</span>
+            <span><b>Creative coding</b><span class="d">Where interaction ideas get prototyped before they earn a place in production.</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" data-todo-link>
+            <span class="k">Writing</span>
+            <span><b data-todo>[Link your Medium]</b><span class="d" data-todo>[Or say the word and this row goes.]</span></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Looking for ────────────────────────────────────────── -->
+
+    <section class="band">
+      <p class="band__no">06 — What I'm looking for</p>
+      <dl class="rows rise">
+        <div><dt>Role</dt><dd>Senior or lead frontend — ownership of the platform, not just the tickets</dd></div>
+        <div><dt>Where</dt><dd>Remote · comfortable with EU and US-morning overlap from IST</dd></div>
+        <div><dt>Notice</dt><dd>2 months</dd></div>
+        <div><dt>Drawn to</dt><dd>Teams where the frontend owns real complexity — multi-tenancy, permissions, realtime, developer tooling</dd></div>
+      </dl>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <a class="big" href="mailto:bhautikbharadava@gmail.com">bhautikbharadava@gmail.com</a>
+    <p class="foot__meta">
+      <span>© <span id="year">2026</span> Bhautik Bharadava</span>
+      <span>
+        <a href="https://github.com/bhautikbharadava" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/bhautikbharadava/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://codepen.io/bhautikbharadava" target="_blank" rel="noopener">CodePen</a> ·
+        <a href="../">Quiet version</a>
+      </span>
+    </p>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

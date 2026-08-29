@@ -10,10 +10,21 @@ No framework, no build step, no dependencies.
 python3 -m http.server 8000
 ```
 
+## Two versions
+
+`/` is the quiet one — warm, light, content-first. `/lab/` is the loud one: a hand-written WebGL
+fragment shader, oversized type, scramble reveals and a custom cursor. Same content, same person,
+different volume.
+
+They are **separate routes rather than a toggle** on purpose. A recruiter opening the site on a
+train should never download a shader, so the default page stays static and fast; the lab gets to
+be maximal because nobody arrives there by accident. Each links to the other.
+
 ## Layout
 
 ```
-index.html        the page
+index.html        the quiet page
+lab/              the loud one — shader, scramble, cursor
 404.html          not-found page
 src/styles.css    palette, type, layout, print stylesheet
 src/app.js        career rail, local time, placeholder audit
@@ -36,6 +47,16 @@ CHECKLIST.md      what still needs filling in
 **Light only.** A deliberate choice, not an oversight — the palette is warm paper and it's painted explicitly, so it never inherits a host theme.
 
 **The avatar is the illustration from the old site.** A real photograph would land better with a hiring manager; swap `images/Avatar.png` and nothing else changes.
+
+## About the shader
+
+`lab/app.js` is hand-written WebGL — no Three.js, no libraries. Domain-warped fbm through a warm
+ramp, pushed around by a lagged cursor and by scroll. One fullscreen triangle, one pass. Device
+pixel ratio is capped at 1.75 (a full-screen fbm at 3× is a heater), rendering pauses when the tab
+is hidden, and if the context fails to create, a CSS gradient stands in and the page carries on.
+
+A scrim sits between the shader and the text: the field swings bright amber, and body copy over an
+unconstrained shader is a legibility gamble.
 
 ## History
 
