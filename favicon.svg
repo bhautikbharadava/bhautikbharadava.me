@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#faf7f2"/>
+  <!-- the career rail, as a mark -->
+  <rect x="20" y="14" width="2" height="36" rx="1" fill="#d9d0c2"/>
+  <rect x="20" y="14" width="2" height="18" rx="1" fill="#b3572c"/>
+  <rect x="26" y="21" width="16" height="2" rx="1" fill="#b3572c"/>
+  <rect x="26" y="31" width="12" height="2" rx="1" fill="#b3572c"/>
+  <rect x="26" y="41" width="16" height="2" rx="1" fill="#d9d0c2"/>
+</svg>
