@@ -314,8 +314,11 @@
     const sweep = () => {
       const left = $$('.rise:not(.is-in)');
       left.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.top < innerHeight * 0.92 && r.bottom > 0) el.classList.add('is-in');
+        // Anything whose top has crossed the reveal line counts, including
+        // things already scrolled past. Requiring it to still be on screen
+        // meant a jump — End key, anchor link, a fast fling — could vault
+        // clean over a section and leave it hidden.
+        if (el.getBoundingClientRect().top < innerHeight * 0.92) el.classList.add('is-in');
       });
       if (!left.length) {
         removeEventListener('scroll', onMove);
