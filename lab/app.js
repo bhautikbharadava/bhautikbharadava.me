@@ -46,7 +46,7 @@
 
     float fbm(vec2 p){
       float v = 0.0, a = 0.5;
-      for (int i = 0; i < 6; i++){
+      for (int i = 0; i < 4; i++){
         v += a * noise(p);
         p *= 2.03;
         a *= 0.5;
@@ -163,8 +163,8 @@
     const uMouse  = gl.getUniformLocation(prog, 'u_mouse');
     const uScroll = gl.getUniformLocation(prog, 'u_scroll');
 
-    // a fullscreen 6-octave fbm at 3× is a laptop heater
-    const DPR = Math.min(devicePixelRatio || 1, 1.6);
+    // this is five fbm evaluations per pixel; DPR gets a hard ceiling
+    const DPR = Math.min(devicePixelRatio || 1, 1.35);
 
     function resize() {
       const w = Math.floor(innerWidth * DPR);
@@ -214,7 +214,6 @@
     return true;
   }
 
-  if (!initField()) document.body.classList.add('gl-off');
 
   /* ───────────────────────────────────────────────────────────
      2 · TELEMETRY
@@ -367,5 +366,32 @@
   if (todos) {
     console.warn(`%c[lab] ${todos} unfilled placeholder${todos === 1 ? '' : 's'}.`,
                  'color:#5ad4e6;font-weight:bold');
+  }
+
+  /* ───────────────────────────────────────────────────────────
+     7 · THE FIELD, LAST AND FENCED
+
+     This runs after everything else on purpose. It is decoration,
+     and decoration must never decide whether the page is readable.
+     Previously it ran first: when it hung, every line below it —
+     including the scroll reveal — never executed, and with the old
+     unconditional `opacity:0` that left the whole page blank.
+
+     Now the worst it can do is fail to draw.
+     ─────────────────────────────────────────────────────────── */
+
+  function tooExpensive() {
+    if (still) return true;                                  // reduced motion
+    const cores = navigator.hardwareConcurrency;
+    if (typeof cores === 'number' && cores > 0 && cores <= 4) return true;
+    if (matchMedia('(max-width: 760px)').matches) return true;  // phones, battery
+    return false;
+  }
+
+  try {
+    if (tooExpensive() || !initField()) document.body.classList.add('gl-off');
+  } catch (err) {
+    console.warn('[lab] field disabled:', err);
+    document.body.classList.add('gl-off');
   }
 })();
