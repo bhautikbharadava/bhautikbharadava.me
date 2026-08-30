@@ -300,6 +300,38 @@
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
 
     $$('.rise').forEach(el => io.observe(el));
+
+    // Belt and braces. IntersectionObserver callbacks are delivered as part of
+    // the rendering steps, so anything that stops a page rendering — a
+    // backgrounded tab, an embedded webview that never composites, an
+    // aggressive throttler — stops them arriving. If that happens while the
+    // hidden state is applied, the reader gets a blank page and no way out.
+    // This costs one bounding-rect read per element per scroll frame and makes
+    // that outcome impossible.
+    // Throttled on a timestamp rather than rAF on purpose: rAF is suspended by
+    // exactly the conditions this fallback exists to survive.
+    let last = 0;
+    const sweep = () => {
+      const left = $$('.rise:not(.is-in)');
+      left.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < innerHeight * 0.92 && r.bottom > 0) el.classList.add('is-in');
+      });
+      if (!left.length) {
+        removeEventListener('scroll', onMove);
+        removeEventListener('resize', onMove);
+      }
+    };
+    function onMove() {
+      const now = Date.now();
+      if (now - last < 100) return;
+      last = now;
+      sweep();
+    }
+    addEventListener('scroll', onMove, { passive: true });
+    addEventListener('resize', onMove, { passive: true });
+    // and once now, for whatever is already on screen at load
+    sweep();
   }
 
   /* ───────────────────────────────────────────────────────────
