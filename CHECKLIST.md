@@ -6,21 +6,22 @@ Everything unfilled is marked `data-todo` in `index.html`. It renders in **amber
 grep -c 'data-todo' index.html      # how many are left
 ```
 
-Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork. **Two placeholders remain, down from fourteen** — both are the same thing: your Medium link and which pieces to feature.
+Content was rebuilt from your own résumé (`Bhautik_Bharadava_Senior_Frontend_Engineer_Full`), which replaced a lot of guesswork.
 
----
+## ✅ No placeholders left
 
-## 1 · What's still missing
+```bash
+grep -c 'data-todo' index.html lab/index.html   # both return 0
+```
 
-| Where | What's needed | How to find it |
-|---|---|---|
-| Elsewhere | Medium URL + the three pieces you'd want read — **or say so and I'll delete the section**, since a thin writing section reads worse than none | — |
+Fourteen at the start, now none. The writing section was cut rather than filled — a thin one reads worse than none — so `Elsewhere` is GitHub and CodePen on both pages.
 
-**Filled in since:** 30% faster builds, 3–5 engineers mentored, a 2-month notice period, and the ~50% engagement lift at Gridle from the résumé.
+**This is mergeable.** Merging `redesign/warm` into `master` replaces the live site. Worth doing first:
 
-A bundle-size or load-time before/after would still complement the build-time number — the first is what users feel, the second is what the team feels. Worth adding if it exists, but not worth blocking on.
-
-If a number genuinely doesn't exist, don't invent one. The cards are written so they stand up on specific technical decisions alone; a missing `Result` line degrades gracefully.
+- [ ] Print the quiet page (`⌘P`, or the footer link) and check the résumé PDF
+- [ ] Look at both pages on your phone
+- [ ] Swap `images/Avatar.png` for a real photo if you'd rather — it's still the 2018 illustration
+- [ ] Close PR #10 (design-system version) and PR #11 (concept gallery); neither should ever merge
 
 ---
 
