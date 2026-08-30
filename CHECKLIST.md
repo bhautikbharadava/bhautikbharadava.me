@@ -55,12 +55,25 @@ The repo is connected to Netlify (site `bhautikbharadava`, live at **bhautikbhar
 - [ ] **Merge `redesign/source` into `master`.** That is what replaces the live site — only once the placeholders are filled.
 - [ ] Close the preview-only concept gallery (`preview/concepts`, PR #11) once a direction is settled.
 
-### Two things removed from the old site — restore them if you disagree
+### Analytics — one step left
 
-- **Google AdSense** (`ca-pub-7097771428383038`) — ads work against a portfolio used to apply for senior roles, add third-party requests to a page whose speed is part of the pitch, and earn effectively nothing at this traffic level.
-- **Google Analytics** (`UA-126436259-1`) — dead code. Universal Analytics stopped processing data in July 2023. Add GA4 or something lighter (Plausible, Netlify Analytics) if you want numbers.
+GA4 is wired up in `src/analytics.js` on all three pages, but **it needs your Measurement ID**:
 
----
+1. Google Analytics → Admin → Data Streams → your web stream
+2. Copy the ID (it looks like `G-ABC1234XYZ`)
+3. Paste it into `MEASUREMENT_ID` at the top of `src/analytics.js`
+
+Until then it loads nothing and makes no requests — verified.
+
+Your old `UA-126436259-1` can't be reused. Universal Analytics stopped processing data in July 2023, so it had been collecting nothing for years, and GA4 is a different product with a different ID format.
+
+The tag is deliberately defensive: it refuses malformed IDs, honours Do Not Track, skips `localhost` and Netlify deploy previews so you don't pollute your own data, and loads only after `load` so a third-party script never competes with first paint.
+
+**Two things worth knowing before you commit to GA4.** It's roughly 100KB of third-party JavaScript on a site whose speed is part of the argument, and it sets cookies — which means EU visitors technically need a consent banner. If neither appeals, **Netlify Analytics** is server-side (zero client JS, no cookies, no banner, $9/mo) and you're already on Netlify; **Cloudflare Web Analytics** is free and cookieless. Either would drop straight in.
+
+### Also removed from the old site
+
+- **Google AdSense** (`ca-pub-7097771428383038`) — ads work against a portfolio used to apply for senior roles, add third-party requests to a page whose speed is part of the pitch, and earn effectively nothing at this traffic level. Say the word if you want it back.
 
 ## 4 · Final pass
 
