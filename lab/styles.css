@@ -199,20 +199,40 @@ body.gl-off #gl{display:none}
 .band__no::after{content:"";height:1px;flex:1;
   background:linear-gradient(90deg,var(--line-2),transparent)}
 
-/* reveal — a scan-in wipe rather than a plain fade */
+/* Reveal — a scan-in wipe.
+
+   Two rules here are load-bearing, both learned the hard way:
+
+   1. The hidden state must NOT set clip-path. `inset(0 100% 0 0)` clips the
+      element to zero width, and Chromium factors clip-path into the
+      IntersectionObserver intersection rect — so the element could never
+      intersect, `.is-in` was never added, and the clip was never removed.
+      The reveal's own initial state prevented the reveal. The wipe now runs
+      as an animation on `.is-in`, once the element is already intersecting.
+
+   2. The hidden state is gated behind `body.reveal`, which JS only adds when
+      it knows it can undo it. Without JS, or without IntersectionObserver,
+      every section is simply visible. Content must never depend on a script. */
+
 .rise{
-  opacity:0;transform:translateY(22px);
-  clip-path:inset(0 100% 0 0);
-  transition:opacity .7s var(--ease),transform .7s var(--ease),
-             clip-path .9s var(--ease);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
 }
-.rise.is-in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
-.rise:nth-child(2){transition-delay:.06s}
-.rise:nth-child(3){transition-delay:.12s}
-.rise:nth-child(4){transition-delay:.18s}
+body.reveal .rise{opacity:0;transform:translateY(22px)}
+body.reveal .rise.is-in{
+  opacity:1;transform:none;
+  animation:wipe .9s var(--ease) both;
+}
+@keyframes wipe{
+  from{clip-path:inset(0 100% 0 0)}
+  to{clip-path:inset(0 0 0 0)}
+}
+body.reveal .rise:nth-child(2){transition-delay:.06s}
+body.reveal .rise:nth-child(3){transition-delay:.12s}
+body.reveal .rise:nth-child(4){transition-delay:.18s}
 
 @media (prefers-reduced-motion:reduce){
-  .rise{opacity:1;transform:none;clip-path:none;transition:none}
+  body.reveal .rise{opacity:1;transform:none}
+  body.reveal .rise.is-in{animation:none}
 }
 
 /* ── roles ── */

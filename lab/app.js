@@ -286,13 +286,21 @@
      4 · SCROLL REVEALS
      ─────────────────────────────────────────────────────────── */
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
-    });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+  // Only hide things once we know we can show them again. Without
+  // IntersectionObserver the CSS hidden state never applies and every section
+  // is visible from the start — the page degrades to no animation, not to no
+  // content.
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('reveal');
 
-  $$('.rise').forEach(el => io.observe(el));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+
+    $$('.rise').forEach(el => io.observe(el));
+  }
 
   /* ───────────────────────────────────────────────────────────
      5 · RETICLE
